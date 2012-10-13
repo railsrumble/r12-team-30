@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013124517) do
+ActiveRecord::Schema.define(:version => 20121013140535) do
+
+  create_table "store_pictures", :force => true do |t|
+    t.integer  "store_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
+  end
+
+  add_index "store_pictures", ["store_id"], :name => "index_store_pictures_on_store_id"
 
   create_table "stores", :force => true do |t|
     t.string   "name"
@@ -25,6 +34,8 @@ ActiveRecord::Schema.define(:version => 20121013124517) do
     t.integer  "owner_id"
     t.string   "logo"
   end
+
+  add_index "stores", ["owner_id"], :name => "index_stores_on_owner_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

@@ -5,7 +5,11 @@ section
   div= @store.address
   div= @store.description
   div= @store.short_description
-  div= @store.currency
+
+  - if @store.pictures.any?
+    h4 Gallery
+    - @store.pictures.each do |picture|
+      = image_tag(picture.image.url(:avatar))
 
 - if can? :edit, @store
   = link_to "Edit", edit_store_path(@store), :class => "btn btn-primary"

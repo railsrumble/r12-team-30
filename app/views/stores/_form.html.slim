@@ -1,14 +1,24 @@
-= simple_form_for(store) do |form|
+= simple_nested_form_for(store) do |form|
 
   == form_error_messages(store)
 
-  - if store.logo.present?
-    = link_to image_tag(store.logo.url(:thumb)), store.logo.url
+  - logo = store.logo
+  - if logo.present?
+    = link_to image_tag(logo.url(:thumb)), logo.url
   = form.input :logo, as: :file
   = form.input :name
   = form.input :address
   = form.input :description
   = form.input :short_description
   = form.input :currency
+
+  = form.fields_for :pictures do |picture_form|
+    - picture = picture_form.object.image
+    - if picture.present?
+      = link_to image_tag(picture.url(:thumb)), picture.url
+    = picture_form.input :picture, as: :file
+    = picture_form.link_to_remove "Remove this picture"
+
+  p= form.link_to_add "Add a picture", :pictures
 
   = form.button :submit, :class => "btn btn-primary"
