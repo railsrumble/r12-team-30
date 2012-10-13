@@ -1,0 +1,7 @@
+.user
+  - if user_signed_in?
+    == "Hello, #{link_to current_user.email, edit_registration_path(current_user)}!"
+    br
+    == "Going away? #{link_to "Logout", destroy_user_session_path, :method => :delete}"
+  - else
+    = link_to "Login", new_user_session_path

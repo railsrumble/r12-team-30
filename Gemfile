@@ -7,11 +7,22 @@ gem 'rails', '3.2.8'
 
 gem 'capistrano'
 gem 'mysql2'
+gem 'slim'
+gem 'compass'
+gem 'inherited_resources'
+gem 'responders'
+gem 'simple_form'
+gem 'carmen'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'kaminari'
+gem 'devise'
+gem 'cancan'
+gem 'nested_form'
 
 group :production do
     gem 'therubyracer'
 end
-
 
 # Gems used only for assets and not required
 # in production environments by default.
