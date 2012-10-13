@@ -47,6 +47,8 @@ set :user, "root"
 set :runner, "www-data"
 set :admin_runner, "www-data"
 
+set :shared_children, shared_children + %w{public/uploads}
+
 # Password-less Deploys (Optional)
 #
 # 1. Locate your local public SSH key file. (Usually ~/.ssh/id_rsa.pub)
