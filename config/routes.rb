@@ -3,5 +3,5 @@ Foodstrap::Application.routes.draw do
 
   resources :stores
 
-  root :to => 'stores#index'
+  root :to => 'landing#home'
 end
