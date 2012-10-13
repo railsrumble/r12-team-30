@@ -1,4 +1,4 @@
-Rumble::Application.routes.draw do
+Foodstrap::Application.routes.draw do
   devise_for :users
 
   resources :stores

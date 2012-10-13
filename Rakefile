@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rumble::Application.load_tasks
+Foodstrap::Application.load_tasks
