@@ -124,6 +124,7 @@ GEM
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
     rake (0.9.2.2)
+    rb-readline (0.4.2)
     rdoc (3.12)
       json (~> 1.4)
     responders (0.9.3)
@@ -178,6 +179,7 @@ DEPENDENCIES
   mysql2
   nested_form
   rails (= 3.2.8)
+  rb-readline
   responders
   sass-rails (~> 3.2.3)
   simple_form

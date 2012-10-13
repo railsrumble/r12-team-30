@@ -20,6 +20,10 @@ gem 'devise'
 gem 'cancan'
 gem 'nested_form'
 
+group :development do
+  gem 'rb-readline'
+end
+
 group :production do
     gem 'therubyracer'
 end
