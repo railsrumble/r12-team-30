@@ -7,8 +7,9 @@ html
     = csrf_meta_tags
 
   body
+    nav.navbar.navbar-fixed-top= render 'common/navigation'
     .container
-      .navigation.span12= render 'common/navigation'
-      .main-content.span12
-        = render 'common/flash_messages'
-        = yield
+      .row-fluid
+        .main-content.span12
+          = render 'common/flash_messages'
+          = yield

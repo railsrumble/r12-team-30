@@ -1,36 +1,35 @@
-.navbar.nav.navbar-fixed-top
-  .navbar-inner
-    .container
-      a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.brand href=root_path
-        = site_name
-      .nav-collapse.collapse
-        ul.nav
-          li.divider-vertical
-          li
-            a href=root_path
-              i.icon-home
-              Home
-        .pull-right
-          ul.nav.pull-right
-            - if user_signed_in?
-              li.dropdown
-                a.dropdown-toggle data-toggle="dropdown" href="#"
-                  = "Welcome, #{current_user.real_name}"
-                  b.caret
-                ul.dropdown-menu
-                  li
-                    a href=edit_registration_path(current_user)
-                      i.icon-cog
-                      | Preferences
-                  li.divider
-                  li
-                    a href=destroy_user_session_path data-method="delete"
-                      i.icon-off
-                      | Logout
-            - else
-              li
-                = link_to "Login", new_user_session_path
+.navbar-inner
+  .container
+    a.btn.btn-navbar data-target=".nav-collapse" data-toggle="collapse"
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.brand href=root_path
+      = site_name
+    .nav-collapse.collapse
+      ul.nav
+        li.divider-vertical
+        li
+          a href=root_path
+            i.icon-home
+            Home
+      .pull-right
+        ul.nav.pull-right
+          - if user_signed_in?
+            li.dropdown
+              a.dropdown-toggle data-toggle="dropdown" href="#"
+                = "Welcome, #{current_user.real_name}"
+                b.caret
+              ul.dropdown-menu
+                li
+                  a href=edit_registration_path(current_user)
+                    i.icon-cog
+                    | Preferences
+                li.divider
+                li
+                  a href=destroy_user_session_path data-method="delete"
+                    i.icon-off
+                    | Logout
+          - else
+            li
+              = link_to "Login", new_user_session_path
