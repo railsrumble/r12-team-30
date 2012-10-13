@@ -11,7 +11,7 @@ class Ability
       end
 
       can :create, Store
-      can [:read, :update], Store, owner_id: user.id
+      can :update, Store, owner_id: user.id
     end
 
   end

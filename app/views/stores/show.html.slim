@@ -1,5 +1,7 @@
 h2= @store.name
 section
+  - if @store.logo.present?
+    = image_tag(@store.logo.url(:avatar))
   div= @store.address
   div= @store.description
   div= @store.short_description

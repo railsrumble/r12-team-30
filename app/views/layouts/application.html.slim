@@ -8,5 +8,7 @@ html
 
   body
     .container
-      .navigation.span12== render 'common/navigation'
-      .main-content.span12== yield
+      .navigation.span12= render 'common/navigation'
+      .main-content.span12
+        = render 'common/flash_messages'
+        = yield
