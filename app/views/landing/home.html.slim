@@ -9,11 +9,12 @@
         | quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         | consequat.
       p
-        a.btn.btn-success.btn-large href="#"
-          | Get a 
-          b FREE
-          |  Account!
-        |  or 
+        - unless user_signed_in?
+          a.btn.btn-success.btn-large href=new_user_registration_path
+            | Get a 
+            b FREE
+            |  Account!
+          |  or 
         a.btn.btn-info.btn-large href="#"
           | Visit a Demo
     .span7
