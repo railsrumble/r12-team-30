@@ -1,6 +1,4 @@
-- if user_signed_in?
-  = link_to "Create a store", new_store_path
-
-ul.stores
-  - @stores.each do |store|
-    li= link_to store.name, store_path(store)
+section.stores
+  ul
+    - @stores.each do |store|
+      article.store.clearfix= render 'stores/list', :store => store

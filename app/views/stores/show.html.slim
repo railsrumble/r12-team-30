@@ -1,3 +1,6 @@
+- if can? :edit, @store
+  = link_to "Edit", edit_store_path(@store), :class => "pull-right btn btn-primary"
+
 h2= @store.name
 section
   - if @store.logo.present?
@@ -33,6 +36,3 @@ section
               span= product.name
               span= product.description
               span= product.price
-
-- if can? :edit, @store
-  = link_to "Edit", edit_store_path(@store), :class => "btn btn-primary"

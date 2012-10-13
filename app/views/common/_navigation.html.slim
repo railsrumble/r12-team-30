@@ -17,13 +17,19 @@
           a href=stores_path
             i.icon-glass.icon-large
             | Stores
+        - if can? :create, Store
+          li
+            a href=new_store_path
+              | Create a store
 
       .pull-right
         ul.nav.pull-right
           - if user_signed_in?
             li.dropdown
               a.dropdown-toggle data-toggle="dropdown" href="#"
-                = "Welcome, #{current_user.real_name}"
+                = "Welcome, "
+                b
+                  = current_user.real_name
                 b.caret
               ul.dropdown-menu
                 li
