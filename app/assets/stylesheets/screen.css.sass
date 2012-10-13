@@ -1,8 +1,22 @@
-
+// override boostrap values
 $bodyBackground: #eee
 
+// include libraries
 @import bootstrap
 @import bootstrap-responsive
+@import font-awesome
+
+// fix for font-awesome, which does not remove glyphicons from dropdowns
+.icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"]
+  background-image: none
+
+/****************************** STYLE *****************************************/
 
 body
   .container
