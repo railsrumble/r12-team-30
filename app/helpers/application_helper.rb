@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def flash_class(level)
+    case level
+    when :alert then "warning"
+    when :error then "error"
+    when :notice then "info"
+    when :success then "success"
+    end
+  end
+
   def form_error_messages(resource)
     if resource.errors.present?
       content_tag :ul, {:class => "form_errors"} do

@@ -1,7 +1,7 @@
-- [:notice, :alert].each do |m|
+- [:alert, :error, :notice, :success].each do |m|
   - if flash[m].is_a? String
-    .flash-message(class="#{m}-flash-message")= flash[m]
+    = render 'common/flash_message', :flash_level => m
   - elsif flash[m].is_a? Array
     - flash[m].each do |message|
-      .flash-message(class="#{m}-flash-message")= flash[m]
+      = render 'common/flash_message', :flash_level => m
   - flash[m] = nil
