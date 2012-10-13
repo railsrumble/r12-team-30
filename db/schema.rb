@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013161334) do
+ActiveRecord::Schema.define(:version => 20121013164543) do
 
   create_table "opening_times", :force => true do |t|
     t.integer  "store_id"
@@ -69,17 +69,25 @@ ActiveRecord::Schema.define(:version => 20121013161334) do
 
   add_index "stores", ["owner_id"], :name => "index_stores_on_owner_id"
 
-  create_table "themes", :force => true do |t|
+  create_table "templates", :force => true do |t|
     t.string   "layout"
     t.string   "template"
-    t.string   "palette"
-    t.string   "font"
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "themes", :force => true do |t|
+    t.string   "palette"
+    t.string   "font"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "store_id"
+    t.integer  "template_id"
   end
 
   add_index "themes", ["store_id"], :name => "index_themes_on_store_id"
+  add_index "themes", ["template_id"], :name => "index_themes_on_template_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
