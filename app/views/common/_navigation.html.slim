@@ -19,7 +19,7 @@
             - if user_signed_in?
               li.dropdown
                 a.dropdown-toggle data-toggle="dropdown" href="#"
-                  | Welcome, User
+                  = "Welcome, #{current_user.real_name}"
                   b.caret
                 ul.dropdown-menu
                   li

@@ -1,4 +1,5 @@
 class StoresController < ApplicationController
+  load_and_authorize_resource
   inherit_resources
 
   def create
