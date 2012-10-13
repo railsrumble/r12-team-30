@@ -6,4 +6,10 @@ $bodyBackground: #eee
 
 body
   .container
-    padding-top: 60px // because navbar has fixed position!
+    .main-content
+      padding-top: 60px // because navbar has fixed position!
+
+// default button must be styled with the btn-primary
+.button
+  @extend .btn
+  @extend .btn-primary

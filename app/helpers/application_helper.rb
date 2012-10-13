@@ -8,4 +8,9 @@ module ApplicationHelper
       ""
     end
   end
+
+  def site_name
+    "FoodStrap.me"
+  end
+
 end
