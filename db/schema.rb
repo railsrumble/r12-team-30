@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013164543) do
+ActiveRecord::Schema.define(:version => 20121013224444) do
 
   create_table "opening_times", :force => true do |t|
     t.integer  "store_id"

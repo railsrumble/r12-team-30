@@ -7,4 +7,9 @@ class StoresController < ApplicationController
     @store.owner = current_user
     create!
   end
+
+  def show
+    theme "elegant"
+  end
+
 end

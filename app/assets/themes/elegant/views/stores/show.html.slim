@@ -1,0 +1,90 @@
+.store
+  header
+    .name.span4
+      h1= @store.name
+    - if @store.logo.present?
+      .logo.span4.hidden-phone
+        div= image_tag @store.logo.url(:avatar)
+  section
+    .ribbon
+      = @store.short_description
+
+    .content.clearfix
+      .description.span7= @store.description
+      .gallery.pull-right
+        = image_tag(@store.pictures[0].image)
+
+    .shop
+      header
+        h1.title Shop
+      section.products
+        table.table.table-condensed
+          thead
+            tr
+              th colspan="2" Description
+              th.centered Price
+              th.centered Qty
+              th.centered colspan="2" Total
+          tbody
+            - ProductTaxonomy.all.each do |taxonomy|
+              - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
+              - if taxonomy_products.any?
+
+                - taxonomy_products.each do |product|
+                  tr.product
+                    td.taxonomy
+                      = image_tag(taxonomy.icon_url)
+                    td.name
+                      = product.name
+                    td.price.centered
+                      = product.price
+                      = @store.currency
+                    td.quantity.centered
+                      a.control href="#" data-action="remove-from-cart"
+                        i.icon-minus-sign
+                      = "0"
+                      a.control href="#" data-action="add-to-cart"
+                        i.icon-plus-sign
+                    td.total.centered colspan="2"
+                      = "0"
+                    td.collapse-control
+                      a.collapse href="#description-#{product.id}"
+                        i.icon-chevron-down
+                  tr.product 
+                    td.description colspan="6"
+                      div.collapsed id="description-#{product.id}"= product.description
+
+    .separator
+
+/ section
+/   div= @store.address
+/   div= @store.description
+/   div= @store.short_description
+
+/   - if @store.pictures.any?
+/     h4 Gallery
+/     ul.pictures
+/       - @store.pictures.each do |picture|
+/         li= image_tag(picture.image.url(:avatar))
+
+/   - if @store.opening_times.any?
+/     h4 Opening times
+/     ul.opening_times
+/       - @store.opening_times.each do |ot|
+/         li
+/           span= ot.formatted_day
+/           span= ot.formatted_start
+/           span= ot.formatted_end
+
+/   - if @store.products.any?
+/     h3 Products
+/     - ProductTaxonomy.all.each do |taxonomy|
+/       - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
+/       - if taxonomy_products.any?
+/         h4= taxonomy.name
+/         ul.products
+/           - taxonomy_products.each do |product|
+/             li
+/               span= product.name
+/               span= product.description
+/               span= product.price

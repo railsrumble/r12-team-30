@@ -1,0 +1,104 @@
+$sansFontFamily:  "carroisgothic", sans-serif
+$serifFontFamily: "calluna", serif
+$monoFontFamily:  Monaco, Menlo, Consolas, "Courier New", monospace
+
+@import bootstrap
+@import bootstrap-responsive
+
+$red: #500000
+
+table
+  .centered
+    text-align: center
+
+.collapsed
+  display: none
+
+body
+  background-image: image-url('elegant/images/background.png')
+  .container
+    background-image: image-url('elegant/images/light.png')
+    background-size: 100% // resize bg
+    background-repeat: no-repeat
+    .main-content
+      background: $white
+      padding: 20px 32px
+      margin-top: 20px
+      +border-radius(10px)
+      .store
+        &>header
+          height: 180px
+          .name
+            display: table
+            height: inherit
+            h1
+              display: table-cell
+              
+              text-align: center
+              vertical-align: middle
+          .logo
+            display: table
+            text-align: center
+            div
+              display: table-cell
+              vertical-align: middle
+              img
+                border: 3px solid $red
+        &>section
+          .ribbon
+            background-image: image-url('elegant/images/ribbon.png')
+            background-size: 100%
+            background-repeat: no-repeat
+            color: white
+            overflow: hidden
+            padding: 26px
+            padding-left: 70px
+            position: relative
+            right: -62px
+            text-shadow: 1px 1px $black
+          .content
+            margin-top: 35px
+            .description
+            .gallery
+              background-image: image-url('elegant/images/gallery.png')
+              background-size: 100%
+              background-repeat: no-repeat
+              height: 307px
+              img
+                width: 239px
+                height: 239px
+                padding: 32px 27px
+          .shop
+            .title
+              color: $red
+              &:after
+                content: ""
+                background-image: image-url('elegant/images/shop.png')
+                display: inline-block
+                height: 5px
+                position: relative
+                right: -10px
+                top: -8px
+                width: 87%
+            .products
+              .product
+                .name, .price, .quantity, .total
+                  line-height: 32px
+                .quantity
+                  .control
+                    margin: 0 5px
+              .description
+                border-top: 0
+                padding: 5px 30px
+              .collapse-control
+                // border-top: 0
+                vertical-align: bottom
+          .separator
+            background-image: image-url('elegant/images/separator.png')
+            background-repeat: no-repeat
+            height: 30px
+            margin: 0 auto
+            width: 634px
+
+
+@import responsive
