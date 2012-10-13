@@ -15,3 +15,8 @@
 //= require bootstrap
 //= require jquery_nested_form
 //= require_tree .
+
+$(document).ready(function(){
+    // Target your .container, .wrapper, .post, etc.
+    $("#video-landing").fitVids();
+});
