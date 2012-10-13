@@ -2,6 +2,9 @@
 
   == form_error_messages(store)
 
+  - if store.logo.present?
+    = link_to image_tag(store.logo.url(:thumb)), store.logo.url
+  = form.input :logo, as: :file
   = form.input :name
   = form.input :address
   = form.input :description
