@@ -9,9 +9,7 @@ class Store < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
   accepts_nested_attributes_for :opening_times, allow_destroy: true
 
-  validates_presence_of :name
-  validates_presence_of :address
-  validates_presence_of :description
+  validates_presence_of :name, :address, :description
 
   mount_uploader :logo, LogoUploader
 end

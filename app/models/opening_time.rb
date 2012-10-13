@@ -2,10 +2,7 @@ class OpeningTime < ActiveRecord::Base
   belongs_to :store
   attr_accessible :end_time, :start_time, :weekday
 
-  validates_presence_of :store
-  validates_presence_of :weekday
-  validates_presence_of :start_time
-  validates_presence_of :end_time
+  validates_presence_of :weekday, :start_time, :end_time
 
   validate :time_period
 
