@@ -2,7 +2,8 @@ header.name
   h1= link_to store.name, store_path(store)
 .description.clearfix
   aside.logo.pull-left
-    = image_tag store.logo.url(:avatar), :class => "img-polaroid"
+    - if store.logo.present?
+      = image_tag store.logo.url(:avatar), :class => "img-polaroid"
   = store.short_description
 footer.details.clearfix
   = link_to "View details", store_path(store), :class => "pull-right btn btn-primary"
