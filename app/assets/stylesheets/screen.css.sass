@@ -16,9 +16,15 @@ $bodyBackground: white
 .dropdown-menu > .active > a > [class*=" icon-"]
   background-image: none
 
+// fix for btn-block, overriden by bootstrap/forms
+.btn-block
+  width: 100% !important
+
+
 /****************************** STYLE *****************************************/
 
 body
   .container
     .main-content
       padding-top: 60px // because navbar has fixed position!
+
