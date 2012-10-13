@@ -8,6 +8,8 @@ class Store < ActiveRecord::Base
   has_many :opening_times
   has_many :products
 
+  has_one :theme
+
   accepts_nested_attributes_for :pictures, allow_destroy: true
   accepts_nested_attributes_for :opening_times, allow_destroy: true
   accepts_nested_attributes_for :products, allow_destroy: true
