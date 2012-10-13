@@ -30,9 +30,28 @@ section
       - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
       - if taxonomy_products.any?
         h4= taxonomy.name
-        ul.products
+        table.table.table-striped.table-bordered.products style="width: 600px"
           - taxonomy_products.each do |product|
-            li
-              span= product.name
-              span= product.description
-              span= product.price
+            tr.product data-product=product.id
+              td.name
+                = product.name
+              td.description
+                = product.description
+              td.price
+                = product.price
+              td.actions
+                span.quantity 0
+                button.add +
+                button.remove -
+
+section.cart style="position: fixed; bottom: 0; right: 0; height: 300px; width: 300px; border: 1px solid red"
+  h4 CART
+  table.products.table.table-striped
+
+  h4 TOTAL
+  .total
+    span.amount 0
+    span.currency $
+
+- if can? :edit, @store
+  = link_to "Edit", edit_store_path(@store), :class => "btn btn-primary"
