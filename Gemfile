@@ -19,13 +19,14 @@ gem 'kaminari'
 gem 'devise'
 gem 'cancan'
 gem 'nested_form'
+gem 'themes_for_rails'
 
 group :development do
   gem 'rb-readline'
 end
 
 group :production do
-    gem 'therubyracer'
+  gem 'therubyracer'
 end
 
 # Gems used only for assets and not required
