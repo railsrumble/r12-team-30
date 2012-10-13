@@ -1,2 +1,8 @@
 h2= @store.name
+section
+  div= @store.address
+  div= @store.description
+  div= @store.short_description
+  div= @store.currency
+
 = link_to "Edit", edit_store_path(@store)
