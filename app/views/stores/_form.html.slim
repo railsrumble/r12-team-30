@@ -10,15 +10,23 @@
   = form.input :address
   = form.input :description
   = form.input :short_description
-  = form.input :currency
+  = form.input :currency, collection: ["$", "€"]
 
   = form.fields_for :pictures do |picture_form|
     - picture = picture_form.object.image
     - if picture.present?
       = link_to image_tag(picture.url(:thumb)), picture.url
-    = picture_form.input :picture, as: :file
+    = picture_form.input :image, as: :file
     = picture_form.link_to_remove "Remove this picture"
 
   p= form.link_to_add "Add a picture", :pictures
+
+  = form.fields_for :opening_times do |time_form|
+    = time_form.input :weekday, collection: OpeningTime.weekdays_hash
+    = time_form.input :start_time, minute_step: 15
+    = time_form.input :end_time, minute_step: 15
+    = time_form.link_to_remove "Remove this scheduled time"
+
+  p= form.link_to_add "Add a scheduled time", :opening_times
 
   = form.button :submit, :class => "btn btn-primary"

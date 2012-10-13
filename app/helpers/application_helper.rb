@@ -21,5 +21,4 @@ module ApplicationHelper
   def site_name
     "FoodStrap.me"
   end
-
 end
