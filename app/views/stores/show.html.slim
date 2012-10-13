@@ -21,5 +21,18 @@ section
           span= ot.formatted_start
           span= ot.formatted_end
 
+  - if @store.products.any?
+    h3 Products
+    - ProductTaxonomy.all.each do |taxonomy|
+      - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
+      - if taxonomy_products.any?
+        h4= taxonomy.name
+        ul.products
+          - taxonomy_products.each do |product|
+            li
+              span= product.name
+              span= product.description
+              span= product.price
+
 - if can? :edit, @store
   = link_to "Edit", edit_store_path(@store), :class => "btn btn-primary"

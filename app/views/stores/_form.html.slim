@@ -29,4 +29,13 @@
 
   p= form.link_to_add "Add a scheduled time", :opening_times
 
+  = form.fields_for :products do |product_form|
+    = product_form.association :product_taxonomy
+    = product_form.input :name
+    = product_form.input :description
+    = product_form.input :price
+    = product_form.link_to_remove "Remove this product"
+
+  p= form.link_to_add "Add a product", :products
+
   = form.button :submit, :class => "btn btn-primary"

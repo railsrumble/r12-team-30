@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013142733) do
+ActiveRecord::Schema.define(:version => 20121013162111) do
 
   create_table "opening_times", :force => true do |t|
     t.integer  "store_id"
@@ -23,6 +23,27 @@ ActiveRecord::Schema.define(:version => 20121013142733) do
   end
 
   add_index "opening_times", ["store_id"], :name => "index_opening_times_on_store_id"
+
+  create_table "product_taxonomies", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "icon"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.integer  "store_id"
+    t.integer  "product_taxonomy_id"
+    t.string   "name"
+    t.text     "description"
+    t.float    "price"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  add_index "products", ["product_taxonomy_id"], :name => "index_products_on_product_taxonomy_id"
+  add_index "products", ["store_id"], :name => "index_products_on_store_id"
 
   create_table "store_pictures", :force => true do |t|
     t.integer  "store_id"
@@ -36,7 +57,7 @@ ActiveRecord::Schema.define(:version => 20121013142733) do
   create_table "stores", :force => true do |t|
     t.string   "name"
     t.string   "address"
-    t.string   "description"
+    t.text     "description"
     t.string   "short_description"
     t.string   "contact_info"
     t.string   "currency"
