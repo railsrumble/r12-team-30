@@ -1,0 +1,11 @@
+= simple_form_for(store) do |form|
+
+  == form_error_messages(store)
+
+  = form.input :name
+  = form.input :address
+  = form.input :description
+  = form.input :short_description
+  = form.input :currency
+
+  = form.button :submit
