@@ -1,8 +1,33 @@
 h2 Orders Management
 
+ul.orders
 - @orders.each do |order|
-  - items = order.items
-  li.items data-order=order.id
-    - items.each do |item|
-      = item.product.name
-      = item.quantity
+  li
+    h4 CUSTOMER
+    span.customer= order.customer.name
+    span.customer_note= " (#{order.customer_note})"
+
+    h4 PICKUP TIME
+    = order.pickup_time
+
+    h4 PRODUCTS
+    table.table.table-striped.items data-order=order.id
+      - order.items.each do |item|
+        tr.item
+          td.product= item.name
+          td.quantity= item.quantity
+          td.price= item.price
+          td.subtotal = item.subtotal
+
+    h4 TOTAL
+    .total
+      span.value= order.total
+      span.currency= order.currency
+
+    h4 STATUS
+    span.status= order.status
+    ul.actions
+      li= link_to "Confim this order", "#"
+      li= link_to "Complete this order", "#"
+      li= link_to "Delete this order", "#"
+

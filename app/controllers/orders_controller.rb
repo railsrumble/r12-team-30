@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     products = products_ids.zip(products_quantities)
 
     @order = Order.new(params[:order])
+    @order.customer = current_user
     if @order.save
       products.each do |id, quantity|
         item = OrderItem.new(order: @order, product: Product.find(id), quantity: quantity)
