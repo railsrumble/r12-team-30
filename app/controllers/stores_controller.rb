@@ -21,4 +21,14 @@ class StoresController < ApplicationController
     @orders = @store.orders.manageable
   end
 
+  def index
+    @stores = Store.scoped
+    
+    if params[:user]
+      @stores = @stores.filter_by_user(current_user)
+    end
+
+    index!
+  end
+
 end

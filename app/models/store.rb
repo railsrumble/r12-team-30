@@ -18,6 +18,8 @@ class Store < ActiveRecord::Base
 
   validates_presence_of :name, :address, :description, :currency
 
+  scope :filter_by_user, lambda { |user| where(:owner_id => user.id) }
+
   mount_uploader :logo, LogoUploader
 
   geocoded_by :address
