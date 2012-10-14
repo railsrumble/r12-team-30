@@ -6,3 +6,4 @@
 #= require ../../../javascripts/gmaps
 #= require ../../../javascripts/shopping
 #= require ../../shared/javascripts/application
+#= require ../../shared/javascripts/cart_scrolling
