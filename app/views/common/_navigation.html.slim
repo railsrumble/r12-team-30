@@ -3,7 +3,7 @@
     .span4.logo
       a.brand href=root_path
         = image_tag("logobig.png")
-    .span7.pull-right.menu-navbar
+    .span9.pull-right.menu-navbar
       .navbar
         .container
           .nav-collapse.collapse
@@ -12,7 +12,11 @@
                 li
                   a href=stores_path
                     i.icon-glass.icon-large
-                    | Stores
+                    | My Stores
+                li
+                  a href=stores_path
+                    i.icon-glass.icon-large
+                    | Explore Stores
                 - if can? :create, Store
                   li
                     a href=new_store_path
