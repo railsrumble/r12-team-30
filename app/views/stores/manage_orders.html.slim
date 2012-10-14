@@ -1,41 +1,59 @@
-h2 Orders Management
+section.manage_orders 
+  h2.mustachified= @store.name
+  .clear
+  h3 Orders Management
+  ul.orders
+  - @orders.each do |order|
+    div.landing id="order_#{order.id}" data-order=order.id
+      .synthetic
+        .customer_block
+          h4 CUSTOMER
+          span.customer= order.customer.name
+        .pickup_block
+          h4 PICKUP TIME
+          span= order.pickup_time
+        .total_block
+          h4 TOTAL
+          .total
+            span.value= order.total
+            span.currency= order.currency
+        i.icon-plus-sign.open_details
+      .clear
+      .order_details
+        h4 PRODUCTS
+        table.table.table-striped.items data-order=order.id
+          tr.header
+            td.product 
+              h5 Products
+            td.quantity 
+              h5 Quantity
+            td.price 
+              h5 Price
+            td.subtotal 
+              h5 Subtotal
+          - order.items.each do |item|
+            tr.item
+              td.product= item.name
+              td.quantity= item.quantity
+              td.price= item.price
+              td.subtotal = item.subtotal
 
-ul.orders
-- @orders.each do |order|
-  li data-order=order.id
-    h4 CUSTOMER
-    span.customer= order.customer.name
-    span.customer_note= " (#{order.customer_note})"
+      .status_block
+        h4 STATUS
+        span.status= order.status
+        - if order.customer_note.present?
+          h4 CUSTOMER NOTE
+          span.customer_note= " #{order.customer_note}"
 
-    h4 PICKUP TIME
-    = order.pickup_time
-
-    h4 PRODUCTS
-    table.table.table-striped.items data-order=order.id
-      - order.items.each do |item|
-        tr.item
-          td.product= item.name
-          td.quantity= item.quantity
-          td.price= item.price
-          td.subtotal = item.subtotal
-
-    h4 TOTAL
-    .total
-      span.value= order.total
-      span.currency= order.currency
-
-    h4 ORDER NOTE
-    = simple_form_for(order, html: { class: 'form-inline' }, remote: true) do |f|
-      = f.input :store_note, label: false
-      = f.button :submit, "Update"
-
-    h4 STATUS
-    span.status= order.status
-
-    ul.actions
-      - if order.is_confirmable?
-        li= button_to "Confim this order", confirm_order_path(order)
-      - if order.is_completeable?
-        li= button_to "Complete this order", complete_order_path(order)
-      li= link_to "Reject this order", order_path(order), :confirm => 'Are you sure? This order will be deleted!', :method => :delete
+        - if order.is_confirmable?
+          = button_to "Confim this order", confirm_order_path(order), class: "buttons ok"
+        - if order.is_completeable?
+          = button_to "Complete this order", complete_order_path(order), class: "buttons ok"
+        = link_to "Reject this order", order_path(order), :confirm => 'Are you sure? This order will be rejected!', :method => :delete, class: "buttons", id: "reject"
+      .clear
+      = simple_form_for(order, html: { class: 'form-inline notes-form' }, remote: true) do |f|
+        h4 ORDER NOTE
+        = f.input :store_note, label: false
+        = f.button :submit, "Update"
+      .clear
 
