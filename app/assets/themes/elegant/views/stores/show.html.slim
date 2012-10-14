@@ -14,13 +14,10 @@
       #store_gallery.gallery.pull-right.carousel.carousel-fade
         - if @store.pictures.present?
           .carousel-inner
+            .item.active= image_tag @store.pictures.shift.image
             - @store.pictures.each do |store|
-              - if store == @store.pictures.first
-                .item.active
-                  = image_tag(store.image)
-              - else
-                .item
-                  = image_tag(store.image)
+              .item
+                = image_tag(store.image)
 
     .shop
       header
