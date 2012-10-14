@@ -13,6 +13,8 @@ class StoresController < ApplicationController
   end
 
   def manage_orders
+    @store = Store.find(params[:id])
+    @orders = @store.orders
   end
 
 end

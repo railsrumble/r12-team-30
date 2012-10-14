@@ -21,12 +21,14 @@ $ ->
     subtotal = (quantity * price).toFixed(2)
 
     if $product.length
+      console.log("Cart: updating existing product " + product_id)
       if quantity == 0
         $product.remove()
       else
         $product.find(".quantity").html(quantity)
         $product.find(".subtotal").html(subtotal + currency)
     else
+      console.log("Cart: adding new product " + product_id)
       if quantity != 0
         $elem = $("<tr data-product=" + product_id + "/>").
           append("<td class='name'>" + name + "</td>").
@@ -43,10 +45,12 @@ $ ->
 
   $("td .add").click ->
     product_id = $(this).closest('[data-product]').data('product')
+    console.log("Adding product " + product_id)
     changeProductQuantity(product_id, 1)
 
   $("td .remove").click ->
     product_id = $(this).closest('[data-product]').data('product')
+    console.log("Removing product " + product_id)
     changeProductQuantity(product_id, -1)
 
   $("#new_order").submit ->
@@ -57,6 +61,9 @@ $ ->
       product_ids.push($elem.data('product'))
       product_quantities.push(parseInt($elem.find('.quantity').html()))
     )
+
+    console.log("Products ids: " + product_ids)
+    console.log("P.Quantities: " + product_quantities)
 
     $("#order_products_ids").attr('value', product_ids)
     $("#order_products_quantities").attr('value', product_quantities)

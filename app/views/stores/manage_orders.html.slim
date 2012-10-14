@@ -1,1 +1,8 @@
 h2 Orders Management
+
+- @orders.each do |order|
+  - items = order.items
+  li.items data-order=order.id
+    - items.each do |item|
+      = item.product.name
+      = item.quantity
