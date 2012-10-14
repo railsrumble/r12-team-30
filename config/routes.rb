@@ -3,7 +3,11 @@ Foodstrap::Application.routes.draw do
 
   devise_for :users
 
-  resources :stores
+  resources :stores do
+    member do
+      get :manage_orders
+    end
+  end
 
   root :to => 'landing#home'
 end

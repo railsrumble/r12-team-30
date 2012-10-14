@@ -18,20 +18,21 @@ $ ->
   updateCart = (product_id, name, price, quantity) ->
     $product = $cart.find("[data-product=" + product_id + "]")
     currency = $('.total span.currency').html()
+    subtotal = (quantity * price).toFixed(2)
 
     if $product.length
       if quantity == 0
         $product.remove()
       else
         $product.find(".quantity").html(quantity)
-        $product.find(".subtotal").html(quantity * price + currency)
+        $product.find(".subtotal").html(subtotal + currency)
     else
       if quantity != 0
         $elem = $("<tr data-product=" + product_id + "/>").
           append("<td class='name'>" + name + "</td>").
           append("<td class='price'>" + price + currency + "</td>").
           append("<td class='quantity'>" + quantity  + "</td> ").
-          append("<td class='subtotal'>" + quantity * price + currency+ "</td> ")
+          append("<td class='subtotal'>" + subtotal + currency + "</td> ")
 
         $cart.find("table.products").append($elem)
 

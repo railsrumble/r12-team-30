@@ -12,4 +12,7 @@ class StoresController < ApplicationController
     # theme "elegant"
   end
 
+  def manage_orders
+  end
+
 end

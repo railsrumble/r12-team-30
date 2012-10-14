@@ -10,8 +10,8 @@ class Ability
         can :manage, :all
       end
 
-      can :create, Store
-      can :update, Store, owner_id: user.id
+      can [:read, :create], Store
+      can [:update, :manage_orders], Store, owner_id: user.id
     end
 
   end
