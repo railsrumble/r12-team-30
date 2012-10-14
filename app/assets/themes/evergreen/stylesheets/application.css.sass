@@ -6,33 +6,9 @@ $monoFontFamily:  Monaco, Menlo, Consolas, "Courier New", monospace
 @import bootstrap-responsive
 @import font-awesome
 
-// fix for font-awesome, which does not remove glyphicons from dropdowns
-a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
-.nav > .active > a > [class^="icon-"],
-.nav > .active > a > [class*=" icon-"],
-.dropdown-menu > li > a:hover > [class^="icon-"],
-.dropdown-menu > li > a:hover > [class*=" icon-"],
-.dropdown-menu > .active > a > [class^="icon-"],
-.dropdown-menu > .active > a > [class*=" icon-"]
-  background-image: none
-
-.control
-  i
-    color: $textColor
-  &:hover
-    i
-      text-decoration: none
-
-// apply a natural box layout model to all elements
-*
-  +box-sizing("border-box")
-
-table
-  .centered
-    text-align: center
-
-.collapsed
-  display: none
+@import ../../shared/stylesheets/orders
+@import ../../shared/stylesheets/forms
+@import ../../shared/stylesheets/generic
 
 body
   .full-container
