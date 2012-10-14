@@ -1,4 +1,9 @@
 section.stores
-  ul
-    - @stores.each do |store|
-      article.store.clearfix= render 'stores/list', :store => store
+  - if @stores.empty?
+    p
+      span= "Sorry, no stores available at the moment. "
+      b= link_to "Create a new store!", new_store_path
+  - else
+    ul
+      - @stores.each do |store|
+        article.store.clearfix= render 'stores/list', :store => store
