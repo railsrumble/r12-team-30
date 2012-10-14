@@ -24,6 +24,8 @@ a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
       text-decoration: none
 
 $red: #500000
+$bg_color_red: #a40526
+$bg_color_yellow: #ffffdf
 $bg_img: "elegant/images/background.png"
 $container_bg_img: "elegant/images/light.png"
 $menu_bg_img: "elegant/images/menu.png"
@@ -48,19 +50,40 @@ body
     background-size: 100% // resize bg
     background-repeat: no-repeat
     position: relative
-    .menu
-      background-image: image-url($menu_bg_img)
+    .ribbon-dash
+      background-image: image-url('elegant/images/ribbon-dash.png')
       background-repeat: no-repeat
+      display: block
+      height: 17px
+      width: 317px
+      &.top
+        margin-left: -5px
+        margin-top: -6px
+      &.bottom
+        margin-left: -4px
+      &.long
+        background-image: image-url("elegant/images/ribbon-dash-long.png")
+        margin-left: -9px
+        width: 702px
+        &.top
+          margin-top: -10px
+        &.bottom
+          margin-top: 4px
+    .menu
+      // background-image: image-url($menu_bg_img)
+      // background-repeat: no-repeat
+      background-color: $bg_color_red
       color: white
       margin-right: -40px
+      margin-bottom: 20px
       margin-top: 90px
-      padding-right: 40px
-      padding-left: 55px
-      padding-top: 30px
+      // padding: 30px 0
       text-shadow: 1px 1px $black
       width: 70%
-      +size(200px, 219px)
-
+      +border-top-left-radius(10px)
+      +border-bottom-left-radius(10px)
+      +box-shadow(1px 0 13px black)
+      +size(auto, 219px)
       ul
         list-style: none inside none
         li
@@ -74,10 +97,29 @@ body
             &:hover
               i
                 text-decoration: none
+    .cart
+      background-color: $bg_color_red
+      color: white
+      text-align: left
+      margin-right: -40px
+      padding-right: 40px
+      width: 260px
+      // +gradient-directional(#a40526, #ce2024, -108deg)
+      +border-top-left-radius(10px)
+      +border-bottom-left-radius(10px)
+      .products, .order
+        padding-left: 10px
+        text-shadow: 1px 1px black
+        h4
+          i
+            background-image: none
+            margin-right: 10px
+            font-size: 110%
+      .order
 
 
     .main-content
-      background: $white
+      background: $bg_color_yellow
       padding: 20px 32px
 
       margin-top: 20px
@@ -103,16 +145,24 @@ body
                 border: 3px solid $red
         &>section
           .ribbon
-            background-image: image-url('elegant/images/ribbon.png')
-            background-size: 100%
-            background-repeat: no-repeat
+            // background-image: image-url('elegant/images/ribbon.png')
+            // background-size: 100%
+            // background-repeat: no-repeat
+            background-color: $bg_color_red
             color: white
             overflow: hidden
-            padding: 26px
-            padding-left: 70px
+            // padding: 26px
+            // padding-left: 70px
+            padding: 15px
+            padding-right: 30px
             position: relative
             right: -62px
             text-shadow: 1px 1px $black
+            +border-top-left-radius(10px)
+            +border-bottom-left-radius(10px)
+            p
+              margin: 0
+              margin-top: -5px
           .content
             margin-top: 35px
             .description
@@ -138,6 +188,8 @@ body
                 top: -8px
                 width: 87%
             .products
+              td
+                border-color: $textColor
               .product
                 .name, .price, .quantity, .total
                   line-height: 32px
@@ -179,7 +231,7 @@ body
       margin-bottom: 50px
       position: relative
       p
-        background-color: $white
+        background-color: $bg_color_yellow
         margin: 0
         text-align: center
       .graphic_footer

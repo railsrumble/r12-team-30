@@ -1,9 +1,9 @@
 $ ->
 
   changeProductQuantity = (product_id, delta) ->
-    $product_container = $('table.products [data-product=' + product_id + ']')
-    $quantity = $product_container.find('.quantity')
-    price = $product_container.find('.price').html()
+    $product_container = $('section.products table [data-product=' + product_id + ']')
+    $quantity = $product_container.find('.quantity .value')
+    price = $product_container.find('.price .value').html()
     name = $product_container.find('.name').html()
 
     quantity = parseInt($quantity.html())
@@ -12,6 +12,12 @@ $ ->
 
     updateCart(product_id, name, price, quantity)
     $quantity.html(quantity)
+
+    console.log(price)
+    console.log(quantity)
+    total = (quantity * price).toFixed(2)
+    console.log("Cart: updating total " + total)
+    $product_container.find('.total .value').html(total)
 
   $cart = $("section.cart")
 
@@ -43,12 +49,14 @@ $ ->
       total += parseFloat($(elem).html()))
     $cart.find(".total .amount").html(total)
 
-  $("td .add").click ->
+  $("td [data-action='add-to-cart']").click (e) ->
+    e.preventDefault()
     product_id = $(this).closest('[data-product]').data('product')
     console.log("Adding product " + product_id)
     changeProductQuantity(product_id, 1)
 
-  $("td .remove").click ->
+  $("td [data-action='remove-from-cart']").click (e) ->
+    e.preventDefault()
     product_id = $(this).closest('[data-product]').data('product')
     console.log("Removing product " + product_id)
     changeProductQuantity(product_id, -1)

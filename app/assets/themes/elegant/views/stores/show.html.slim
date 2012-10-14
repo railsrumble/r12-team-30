@@ -7,7 +7,9 @@
         div= image_tag @store.logo.url(:avatar)
   section
     .ribbon
-      = @store.short_description
+      span.ribbon-dash.top.long.visible-desktop
+      p= @store.short_description
+      span.ribbon-dash.bottom.long.visible-desktop
 
     .content.clearfix
       .description.span7= @store.description
@@ -36,22 +38,23 @@
               - if taxonomy_products.any?
 
                 - taxonomy_products.each do |product|
-                  tr.product
+                  tr.product data-product=product.id
                     td.taxonomy
                       = image_tag(taxonomy.icon_url)
                     td.name
                       = product.name
                     td.price.centered
-                      = product.price
-                      = @store.currency
+                      span.value= product.price
+                      span.currency= @store.currency
                     td.quantity.centered
                       a.control href="#" data-action="remove-from-cart"
                         i.icon-minus-sign
-                      = "0"
+                      span.value= "0"
                       a.control href="#" data-action="add-to-cart"
                         i.icon-plus-sign
                     td.total.centered colspan="2"
-                      = "0"
+                      span.value= "0"
+                      span.currency= @store.currency
                     td.collapse-control
                       a.collapse.control href="#description-#{product.id}"
                         i.icon-chevron-down
