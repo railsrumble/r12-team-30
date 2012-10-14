@@ -55,10 +55,10 @@
     section
       .shop
         .span4
-          .shoppingcart
+          .shoppingcart#cart
             - order = @store.orders.build
             = render 'orders/theme_form', store: @store, order: order
-        .span8.products
+        .span8.products#products
           h1.title Shop
           = render 'common/theme_product_table', store: @store
 
