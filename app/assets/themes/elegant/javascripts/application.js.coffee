@@ -37,3 +37,23 @@ $ ->
   });
 
   $('<img/>').attr('src', url).appendTo('#store_map a')
+
+  $sidebar = $(".cart")
+  $window = $(window)
+  offset = $sidebar.offset()
+  topPadding = 15
+  max = $(".main-content").height() - offset.top
+
+  $window.scroll ->
+    y = $window.scrollTop()
+    if y < max and y > offset.top
+      
+      # console.log(max);
+      # console.log $window.scrollTop()
+      # console.log $window.scrollTop() - offset.top
+      # console.log ""
+      $sidebar.stop().animate
+        marginTop: y - offset.top + topPadding
+    else
+      $sidebar.stop().animate
+        marginTop: 0

@@ -1,9 +1,9 @@
 .store
   header
-    .name.span4
+    .name.span5
       h1= @store.name
     - if @store.logo.present?
-      .logo.span4.hidden-phone
+      .logo.span5
         div= image_tag @store.logo.url(:avatar)
   section
     .ribbon
