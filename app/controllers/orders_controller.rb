@@ -16,6 +16,8 @@ class OrdersController < ApplicationController
         item = OrderItem.new(order: @order, product: Product.find(id), quantity: quantity)
         @order.items << item
       end
+    else
+      render 'order_failed'
     end
   end
 

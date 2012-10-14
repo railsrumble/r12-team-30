@@ -1,1 +1,13 @@
-alert("Order created!");
+$.each($("section.cart").find("[data-product]"), function(index, elem) {
+  $elem = $(elem)
+  $elem.remove()
+  // reset the total amount
+  $('.total .amount', $('.cart')).html('0')
+  // reset the single quantities
+  $('.products .product .quantity .value').html('0')
+  // reset the single totals
+  $('.products .product .total .value').html('0')
+});
+
+$('.order .alert-error').remove();
+$('.order .alert-success').text('Order created').removeClass('hidden');

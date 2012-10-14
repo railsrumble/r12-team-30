@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
 
   after_create :set_order_status
 
+  validate :pickup_time_not_past
 
   def total
     items.inject(0) do |result, item|
@@ -57,5 +58,11 @@ class Order < ActiveRecord::Base
 
   def set_order_status
     self.update_attributes(:status => Order.status_new)
+  end
+
+  def pickup_time_not_past
+    if pickup_time and pickup_time < Time.now
+      errors.add :pickup_time, "must be in the future"
+    end
   end
 end
