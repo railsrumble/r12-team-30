@@ -21,7 +21,9 @@
                 = render 'common/theme_navigation'
             .span2
 
-        .description.span4= @store.description
+        .description.span4
+          = render 'common/flash_messages'
+          = @store.description
         .gallery.span4
           #store_gallery.gallery.carousel.carousel-fade
             - if @store.pictures.present?
