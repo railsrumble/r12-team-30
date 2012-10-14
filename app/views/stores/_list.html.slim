@@ -6,8 +6,9 @@ header.name
       = image_tag store.logo.url(:avatar), :class => "img-polaroid"
   = store.short_description
 footer.details.clearfix
-  = link_to "View store", store_path(store), :class => "pull-right btn btn-primary"
-  - if can? :edit, store
-    = link_to "Edit store", edit_store_path(store), :class => "pull-right btn btn-primary"
-  - if can? :manage_orders, store
-    = link_to "Manage orders", manage_orders_store_path(store), :class => "pull-right btn btn-primary"
+  .btn-group.pull-right
+    = link_to "View store", store_path(store), :class => "btn btn-primary"
+    - if can? :edit, store
+      = link_to "Edit store", edit_store_path(store), :class => "btn btn-primary"
+    - if can? :manage_orders, store
+      = link_to "Manage orders", manage_orders_store_path(store), :class => "btn btn-primary"
