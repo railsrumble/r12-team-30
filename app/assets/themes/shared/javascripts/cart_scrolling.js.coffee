@@ -2,7 +2,7 @@ $ ->
   $sidebar = $(".cart")
   $window = $(window)
   offset = $sidebar.offset()
-  topPadding = 15
+  topPadding = -10
 
   $window.scroll ->
     y = $window.scrollTop()
