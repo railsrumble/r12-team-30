@@ -12,6 +12,8 @@ class Ability
 
       can [:read, :create], Store
       can [:update, :manage_orders], Store, owner_id: user.id
+
+      can [:update, :confirm, :complete], Order, owner_id: user.id
     end
 
   end
