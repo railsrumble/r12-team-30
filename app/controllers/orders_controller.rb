@@ -25,11 +25,13 @@ class OrdersController < ApplicationController
 
   def confirm
     @order.confirm!
+    flash[:notice] = "You have successfully confirmed an order!"
     redirect_to manage_orders_store_path(@order.store)
   end
 
   def complete
     @order.complete!
+    flash[:notice] = "You have successfully completed an order!"
     redirect_to manage_orders_store_path(@order.store)
   end
 

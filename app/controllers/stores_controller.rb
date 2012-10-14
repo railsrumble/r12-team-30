@@ -14,7 +14,7 @@ class StoresController < ApplicationController
 
   def manage_orders
     @store = Store.find(params[:id])
-    @orders = @store.orders
+    @orders = @store.orders.manageable
   end
 
 end

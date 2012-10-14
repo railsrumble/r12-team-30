@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
 
   after_create :set_order_status
 
+
   def total
     items.inject(0) do |result, item|
       result + item.subtotal
@@ -23,7 +24,7 @@ class Order < ActiveRecord::Base
   end
 
   def self.status_completed
-    "Confirmed"
+    "Completed"
   end
 
   def self.available_statuses
@@ -34,12 +35,22 @@ class Order < ActiveRecord::Base
     ]
   end
 
+  scope :manageable, where(status: [ Order.status_new, Order.status_confirmed ])
+
   def confirm!
     self.update_attributes(:status => Order.status_confirmed)
   end
 
   def complete!
     self.update_attributes(:status => Order.status_completed)
+  end
+
+  def is_confirmable?
+    self.status == Order.status_new
+  end
+
+  def is_completeable?
+    self.status == Order.status_confirmed
   end
 
   private
