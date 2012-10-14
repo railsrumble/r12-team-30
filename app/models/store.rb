@@ -23,6 +23,9 @@ class Store < ActiveRecord::Base
   geocoded_by :address
   after_validation :geocode
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
+
   def link_to_google_maps
     "https://maps.google.com/maps?q=" + CGI::escape(address)
   end

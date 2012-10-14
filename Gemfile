@@ -21,6 +21,7 @@ gem 'cancan'
 gem 'nested_form'
 gem 'themes_for_rails'
 gem 'geocoder'
+gem "friendly_id", "~> 4.0.1"
 
 group :development do
   gem 'rb-readline'
