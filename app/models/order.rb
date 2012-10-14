@@ -8,7 +8,7 @@ class Order < ActiveRecord::Base
 
   after_create :set_order_status
 
-  validate :pickup_time_not_past, on: :create, on: :create
+  validate :pickup_time_not_past, on: :create
 
   default_scope order("pickup_time")
   scope :manageable, where("orders.status = 'New' OR orders.status = 'Confirmed'")
