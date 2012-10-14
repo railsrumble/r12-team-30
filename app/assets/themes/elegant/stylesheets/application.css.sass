@@ -4,8 +4,23 @@ $monoFontFamily:  Monaco, Menlo, Consolas, "Courier New", monospace
 
 @import bootstrap
 @import bootstrap-responsive
+@import font-awesome
+
+// fix for font-awesome, which does not remove glyphicons from dropdowns
+a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"]
+  background-image: none
 
 $red: #500000
+
+// apply a natural box layout model to all elements
+*
+  +box-sizing("border-box")
 
 table
   .centered
@@ -14,17 +29,62 @@ table
 .collapsed
   display: none
 
+
+
+.carousel .item
+  -webkit-transition: opacity 3s !important
+  -moz-transition: opacity 3s !important
+  -ms-transition: opacity 3s !important
+  -o-transition: opacity 3s !important
+  transition: opacity 3s !important
+.carousel.carousel-fade .item
+  +opacity(0)
+
+.carousel.carousel-fade .active.item
+  +opacity(100)
+
+
 body
   background-image: image-url('elegant/images/background.png')
   .container
     background-image: image-url('elegant/images/light.png')
     background-size: 100% // resize bg
     background-repeat: no-repeat
+    position: relative
+    .menu
+      background-image: image-url('elegant/images/menu.png')
+      background-repeat: no-repeat
+      color: white
+      margin-right: -40px
+      margin-top: 90px
+      padding-right: 40px
+      padding-left: 55px
+      padding-top: 30px
+      text-shadow: 1px 1px $black
+      width: 70%
+      +size(200px, 219px)
+
+      ul
+        list-style: none inside none
+        li
+          line-height: 30px
+          &.spaced
+            padding-left: 10px
+          a
+            color: $white
+            i
+              margin-right: 8px
+            &:hover
+              i
+                text-decoration: none
+
+
     .main-content
       background: $white
       padding: 20px 32px
+
       margin-top: 20px
-      +border-radius(10px)
+      +border-top-radius(10px)
       .store
         &>header
           height: 180px
@@ -91,7 +151,6 @@ body
                 border-top: 0
                 padding: 5px 30px
               .collapse-control
-                // border-top: 0
                 vertical-align: bottom
           .separator
             background-image: image-url('elegant/images/separator.png')
@@ -99,6 +158,37 @@ body
             height: 30px
             margin: 0 auto
             width: 634px
-
-
-@import responsive
+          .infos
+            color: $red
+            font-size: 24px
+            line-height: 24px
+            margin: 0 auto
+            margin-top: 30px
+            width: 90%
+            .map
+            .details
+              text-align: center
+              width: 50%
+              &>div
+                margin: 8px 0
+              .opening-times
+                list-style: none inside none
+                li
+                  line-height: 30px
+                  span
+                    display: inline-block
+                    margin: 0 8px
+    footer
+      margin-bottom: 50px
+      position: relative
+      p
+        background-color: $white
+        margin: 0
+        text-align: center
+      .graphic_footer
+        background-image: image-url('elegant/images/footer.png')
+        background-repeat: no-repeat
+        background-size: 100%
+        display: block
+        height: 80px
+        width: 100%

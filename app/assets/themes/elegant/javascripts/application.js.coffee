@@ -19,3 +19,6 @@ $ ->
       else
         _this.html('<i class="icon-chevron-up"></i>')
       ).toggleClass('collapsed')
+
+
+  $('#store_gallery').carousel()

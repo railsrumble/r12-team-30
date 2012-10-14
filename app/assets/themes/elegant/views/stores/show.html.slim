@@ -11,8 +11,12 @@
 
     .content.clearfix
       .description.span7= @store.description
-      .gallery.pull-right
-        = image_tag(@store.pictures[0].image)
+      #store_gallery.gallery.pull-right.carousel.carousel-fade
+        - if @store.pictures.present?
+          .carousel-inner
+            - @store.pictures.each do |store|
+              .item
+                = image_tag(store.image)
 
     .shop
       header
@@ -56,35 +60,20 @@
 
     .separator
 
-/ section
-/   div= @store.address
-/   div= @store.description
-/   div= @store.short_description
-
-/   - if @store.pictures.any?
-/     h4 Gallery
-/     ul.pictures
-/       - @store.pictures.each do |picture|
-/         li= image_tag(picture.image.url(:avatar))
-
-/   - if @store.opening_times.any?
-/     h4 Opening times
-/     ul.opening_times
-/       - @store.opening_times.each do |ot|
-/         li
-/           span= ot.formatted_day
-/           span= ot.formatted_start
-/           span= ot.formatted_end
-
-/   - if @store.products.any?
-/     h3 Products
-/     - ProductTaxonomy.all.each do |taxonomy|
-/       - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
-/       - if taxonomy_products.any?
-/         h4= taxonomy.name
-/         ul.products
-/           - taxonomy_products.each do |product|
-/             li
-/               span= product.name
-/               span= product.description
-/               span= product.price
+    .infos.clearfix
+      .map.pull-left
+        = theme_image_tag('map.png')
+      .details.pull-right
+        .address
+          = @store.address
+        .contact
+          em Phone 
+          = @store.contact_info
+        ul.opening-times
+          em Opening Times
+          - @store.opening_times.each do |ot|
+            li
+              span= ot.formatted_day
+              span= ot.formatted_start
+              | -
+              span= ot.formatted_end
