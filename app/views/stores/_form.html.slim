@@ -3,6 +3,9 @@
   == form_error_messages(store)
   = render 'steps'
   .floater
+
+    - store.build_theme if store.theme.blank?
+
     .step#step1
       h3.mustachified 1. General settings
       .clear
@@ -15,6 +18,11 @@
       = form.input :currency, collection: currency_hash, :input_html => {:class => "small"}, as: :radio_buttons
       = form.input :short_description, :input_html => {:class => "large"}, :label => "Short description (max 255 characters)"
       = form.input :description, :input_html => {:class => "large", :rows => "5"}
+
+      = form.fields_for :theme do |theme_form|
+        = theme_form.association :template
+        = theme_form.input :font, as: :grouped_select, collection: Theme.available_fonts, :group_method => :last, :label_method => :titleize, :value_method => :downcase
+
       input.btn.btn-primary.next.tab value="next step >" data-nextdiv="step2"
 
     - store.pictures.build if store.pictures.empty?

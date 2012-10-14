@@ -9,7 +9,10 @@ class StoresController < ApplicationController
   end
 
   def show
-    theme "elegant"
+    @store = Store.find(params[:id])
+    if @store.theme.present?
+      theme @store.theme.template.template
+    end
   end
 
   def manage_orders

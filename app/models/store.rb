@@ -1,7 +1,7 @@
 class Store < ActiveRecord::Base
   attr_accessible :address, :contact_info, :currency, :description, :name,
     :short_description, :logo, :pictures_attributes, :opening_times_attributes,
-    :products_attributes
+    :products_attributes, :theme_attributes
 
   belongs_to :owner, class_name: User
   has_many :pictures, class_name: StorePicture
@@ -14,6 +14,7 @@ class Store < ActiveRecord::Base
   accepts_nested_attributes_for :pictures, allow_destroy: true
   accepts_nested_attributes_for :opening_times, allow_destroy: true
   accepts_nested_attributes_for :products, allow_destroy: true
+  accepts_nested_attributes_for :theme
 
   validates_presence_of :name, :address, :description, :currency
 
