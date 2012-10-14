@@ -3,7 +3,7 @@
     .sidebar.tubo.span4
       .span2
         br
-      .span8
+      .span9
         .row-fluid
           .logo.board.span12
             div= image_tag @store.logo.url(:avatar)
@@ -12,10 +12,10 @@
             nav.menu
               = render 'common/theme_navigation'
         .row-fluid
-          .shoppingcart.board.span12
+          .shoppingcart.board.span12#cart
             - order = @store.orders.build
             = render 'orders/theme_form', store: @store, order: order
-      .span2
+      .span1
         br
     .content.span8
       .row-fluid
@@ -27,41 +27,7 @@
           .row-fluid
             .shopping.board.span12
               h2.title Shop
-              table.table.table-condensed
-                thead
-                  tr
-                    th colspan="2" Description
-                    th.centered Price
-                    th.centered Qty
-                    th.centered colspan="3" Total
-                tbody
-                  - ProductTaxonomy.all.each do |taxonomy|
-                    - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
-                    - if taxonomy_products.any?
-
-                      - taxonomy_products.each do |product|
-                        tr.product
-                          td.taxonomy
-                            = image_tag(taxonomy.icon_url)
-                          td.name
-                            = product.name
-                          td.price.centered
-                            = product.price
-                            = @store.currency
-                          td.quantity.centered
-                            a.control href="#" data-action="remove-from-cart"
-                              i.icon-minus-sign
-                            = "0"
-                            a.control href="#" data-action="add-to-cart"
-                              i.icon-plus-sign
-                          td.total.centered colspan="2"
-                            = "0"
-                          td.collapse-control
-                            a.collapse.control href="#description-#{product.id}"
-                              i.icon-chevron-down
-                        tr 
-                          td.description colspan="7"
-                            div.collapsed id="description-#{product.id}"= product.description
+              .products#products= render 'common/theme_product_table', store: @store
           .row-fluid
             .presentation.board.span12
               .description.span6= @store.description
