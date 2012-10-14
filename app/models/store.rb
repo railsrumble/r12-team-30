@@ -7,6 +7,7 @@ class Store < ActiveRecord::Base
   has_many :pictures, class_name: StorePicture
   has_many :opening_times
   has_many :products
+  has_many :orders
 
   has_one :theme
 

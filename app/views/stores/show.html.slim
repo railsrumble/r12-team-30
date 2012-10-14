@@ -49,6 +49,8 @@ section
                 button.add +
                 button.remove -
 
+- order = @store.orders.build
+
 section.cart
   h4 CART
   table.products.table.table-striped
@@ -57,6 +59,15 @@ section.cart
   .total
     span.amount 0
     span.currency= @store.currency
+
+  h4 ORDER
+  = simple_form_for(order, :remote => true) do |f|
+    = hidden_field(:order_products, :ids, value:'')
+    = hidden_field(:order_products, :quantities, value:'')
+    = f.input :store_id, :as => :hidden, :value => @store.id
+    = f.input :pickup_time
+    = f.input :customer_note
+    = f.button :submit, :class => "btn btn-primary"
 
 - if can? :edit, @store
   a.btn.btn-primary.btn-large href=edit_store_path(@store)

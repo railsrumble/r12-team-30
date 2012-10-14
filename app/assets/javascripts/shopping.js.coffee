@@ -42,11 +42,21 @@ $ ->
     $cart.find(".total .amount").html(total)
 
   $("td .add").click ->
-    console.log("add")
     product_id = $(this).closest('[data-product]').data('product')
     changeProductQuantity(product_id, 1)
 
   $("td .remove").click ->
-    console.log("remove")
     product_id = $(this).closest('[data-product]').data('product')
     changeProductQuantity(product_id, -1)
+
+  $("#new_order").submit ->
+    product_ids = []
+    product_quantities = []
+    $.each($cart.find("[data-product]"), (index, elem) ->
+      $elem = $(elem)
+      product_ids.push($elem.data('product'))
+      product_quantities.push(parseInt($elem.find('.quantity').html()))
+    )
+
+    $("#order_products_ids").attr('value', product_ids)
+    $("#order_products_quantities").attr('value', product_quantities)
