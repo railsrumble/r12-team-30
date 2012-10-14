@@ -2,7 +2,7 @@ h2 Orders Management
 
 ul.orders
 - @orders.each do |order|
-  li
+  li data-order=order.id
     h4 CUSTOMER
     span.customer= order.customer.name
     span.customer_note= " (#{order.customer_note})"
@@ -24,10 +24,18 @@ ul.orders
       span.value= order.total
       span.currency= order.currency
 
+    h4 ORDER NOTE
+    = simple_form_for(order, html: { class: 'form-inline' }, remote: true) do |f|
+      = f.input :store_note, label: false
+      = f.button :submit, "Update"
+
     h4 STATUS
     span.status= order.status
+
     ul.actions
-      li= link_to "Confim this order", "#"
-      li= link_to "Complete this order", "#"
-      li= link_to "Delete this order", "#"
+      - if order.is_confirmable?
+        li= button_to "Confim this order", confirm_order_path(order)
+      - if order.is_completeable?
+        li= button_to "Complete this order", complete_order_path(order)
+      li= link_to "Reject this order", order_path(order), :confirm => 'Are you sure? This order will be deleted!', :method => :delete
 

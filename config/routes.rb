@@ -9,7 +9,12 @@ Foodstrap::Application.routes.draw do
     end
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      post :confirm
+      post :complete
+    end
+  end
 
   root :to => 'landing#home'
 end

@@ -22,7 +22,7 @@
 
   p= form.link_to_add "Add a picture", :pictures
 
-  = form.fields_for :opening_times do |time_form|
+  = form.fields_for :opening_times, wrapper_html: { class: 'form-inline' } do |time_form|
     = time_form.input :weekday, collection: OpeningTime.weekdays_hash
     = time_form.input :start_time, minute_step: 15
     = time_form.input :end_time, minute_step: 15
