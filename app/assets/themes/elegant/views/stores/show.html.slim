@@ -15,8 +15,12 @@
         - if @store.pictures.present?
           .carousel-inner
             - @store.pictures.each do |store|
-              .item
-                = image_tag(store.image)
+              - if store == @store.pictures.first
+                .item.active
+                  = image_tag(store.image)
+              - else
+                .item
+                  = image_tag(store.image)
 
     .shop
       header

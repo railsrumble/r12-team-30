@@ -81,3 +81,13 @@
                 img
                   width: 200px !important
                   height: 200px !important
+
+.carousel.carousel-fade .item
+  -webkit-transition: opacity 3s ease-in-out !important
+  -moz-transition: opacity 3s ease-in-out !important
+  -ms-transition: opacity 3s ease-in-out !important
+  -o-transition: opacity 3s ease-in-out !important
+  transition: opacity 3s ease-in-out !important
+
+.carousel.carousel-fade .active.item
+  +opacity(100)
