@@ -1,43 +1,85 @@
 = simple_nested_form_for(store, :html => { :class => "form-horizontal" }) do |form|
 
   == form_error_messages(store)
+  = render 'steps'
+  .floater
+    .step#step1
+      h3.mustachified 1. General settings
+      .clear
+      - logo = store.logo
+      - if logo.present?
+        = link_to image_tag(logo.url(:thumb)), logo.url
+      = form.input :name, :label => "Store name"
+      = form.input :logo, as: :file
+      = form.input :address
+      = form.input :currency, collection: currency_hash, :input_html => {:class => "small"}, as: :radio_buttons
+      = form.input :short_description, :input_html => {:class => "large"}, :label => "Short description (max 255 characters)"
+      = form.input :description, :input_html => {:class => "large", :rows => "5"}
+      input.btn.btn-primary.next.tab value="next step >" data-nextdiv="step2"
 
-  - logo = store.logo
-  - if logo.present?
-    = link_to image_tag(logo.url(:thumb)), logo.url
-  = form.input :logo, as: :file
-  = form.input :name
-  = form.input :address
-  = form.input :contact_info
-  = form.input :description
-  = form.input :short_description
-  = form.input :currency, collection: ["$", "€"]
+    - store.pictures.build if store.pictures.empty?
 
-  = form.fields_for :pictures do |picture_form|
-    - picture = picture_form.object.image
-    - if picture.present?
-      = link_to image_tag(picture.url(:thumb)), picture.url
-    = picture_form.input :image, as: :file
-    = picture_form.link_to_remove "Remove this picture"
+    .step#step2
+      h3.mustachified 2. Pictures
+      .clear
+      = form.fields_for :pictures do |picture_form|
+        - picture = picture_form.object.image
+        - if picture.present?
+          = link_to image_tag(picture.url(:thumb)), picture.url
+        = picture_form.input :image, as: :file
+        = picture_form.link_to_remove do
+          i.icon-minus-sign
+      p= form.link_to_add :pictures do
+        i.icon-plus-sign
+        | Add a picture
+      input.btn.btn-primary.prev.tab value="< previous step" data-nextdiv="step1"
+      input.btn.btn-primary.next.tab value="next step >" data-nextdiv="step3"
 
-  p= form.link_to_add "Add a picture", :pictures
+    - (0..6).each do |day| store.opening_times.build(weekday: day, start_time:Time.parse("10:00"), end_time:Time.parse("14:00")) end if store.opening_times.empty?
 
-  = form.fields_for :opening_times, wrapper_html: { class: 'form-inline' } do |time_form|
-    = time_form.input :weekday, collection: OpeningTime.weekdays_hash
-    = time_form.input :start_time, minute_step: 15
-    = time_form.input :end_time, minute_step: 15
-    = time_form.link_to_remove "Remove this scheduled time"
+    .step#step3
+      h3.mustachified 3. Scheduled time
+      .clear
+      .headbar
+        .weekday 
+          h4 Weekday
+        .start 
+          h4 Start time
+        .end 
+          h4 End time
+        .remove 
+      .clear
+      = form.fields_for :opening_times do |time_form|
+        = time_form.input :weekday, collection: OpeningTime.weekdays_hash, label: false, :input_html => {:class => "weekday"}
+        = time_form.input :start_time, minute_step: 15, label: false, :wrapper_html => {:class => "start"}
+        = time_form.input :end_time, minute_step: 15, label: false, :wrapper_html => {:class => "end"}
+        = time_form.link_to_remove label: false do
+          i.icon-minus-sign.remove
+        .clear
+      p= form.link_to_add :opening_times do
+        i.icon-plus-sign
+        | Add scheduled time
+      input.btn.btn-primary.prev.tab value="< previous step" data-nextdiv="step2"
+      input.btn.btn-primary.next.tab value="next step >" data-nextdiv="step4"
 
-  p= form.link_to_add "Add a scheduled time", :opening_times
+    - store.products.build if store.products.empty?
 
-  = form.fields_for :products do |product_form|
-    = product_form.association :product_taxonomy
-    = product_form.input :name
-    = product_form.input :description
-    = product_form.input :price
-    = product_form.link_to_remove "Remove this product"
-
-  p= form.link_to_add "Add a product", :products
-
+    .step#step4
+      h3.mustachified 4. Products
+      .clear
+      = form.fields_for :products do |product_form|
+        = product_form.association :product_taxonomy
+        = product_form.input :name
+        = product_form.input :description, :input_html => {:class => "large", :rows => "5"}
+        = product_form.input :price, :input_html => {:class => "small"}
+        = product_form.link_to_remove class:"btn btn-primary remove" do
+          i.icon-minus-sign
+          | Remove this product
+        .clear
+      p= form.link_to_add :products, class:"btn btn-primary" do
+        i.icon-plus-sign
+        | Add a product
+      input.btn.btn-primary.prev.tab value="< previous step" data-nextdiv="step3"
+      = form.button :submit, :class => "btn btn-primary next tab finish"
+  .clear
   .form-actions
-    = form.button :submit, :class => "btn btn-primary"

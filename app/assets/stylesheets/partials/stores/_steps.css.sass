@@ -1,0 +1,20 @@
+.list
+  width: 300px
+  float: right
+  ul 
+    list-style-type: none
+    li
+      margin-bottom: 5px
+      padding: 3px 0 3px 10px
+      color: $grayLight
+      &:hover
+        cursor: pointer
+      &.done
+        color: $grayDark
+        background: url('baffocaccasecca.png') no-repeat left center transparent
+        background-size: 100%
+      &.active
+        font-weight: bold
+        background: url('baffo.png') no-repeat left center transparent
+        background-size: 100%
+        color: $grayDark

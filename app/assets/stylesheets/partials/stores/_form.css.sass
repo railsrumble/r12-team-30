@@ -1,0 +1,89 @@
+input, textarea
+  width: 210px
+  &.large
+    width: 400px
+  &.small
+    width: 50px
+.floater
+  float: left
+  .step
+    width: 650px
+.form-horizontal 
+  div#step2, div#step3, div#step4
+    display: none
+  .control-label
+    font-weight: 600
+    font-size: 16px
+    text-shadow: 0 1px 0 white
+  .radio
+    display: inline-block
+    margin-left: 5px
+    font-weight: bold
+  .btn.btn-primary.prev.tab 
+    float: left
+    width: 100px
+  .btn.btn-primary.next.tab 
+    float: right
+    width: 100px
+    &.finish
+      background-color: #FFD000
+      background-image: linear-gradient(to bottom, #FFD000, #FFD000)
+      border-color: #FFD000 #FFD000 #FFE111
+      color: $grayDark
+  #step2
+    .control-group.file.optional
+      float: left
+      width: 455px
+      margin-bottom: 10px
+  #step2, #step3
+    i.icon-minus-sign, i.icon-plus-sign
+      font-size: 22px
+      line-height: 29px
+      margin: 0 10px 10px
+    .add_nested_fields
+      padding-top: 5px
+      text-align: right
+      width: auto
+      display: block
+      font-size: 16px
+      font-weight: bold
+  #step3
+    .select 
+      select.required
+        width: 110px
+    .time 
+      select.required
+        width: 50px
+    .fields
+      .control-group
+        float: left
+        .controls
+          margin: 0
+    .weekday
+      float: left
+      width: 300px !important
+      margin-right: 20px
+    .start
+      float: left
+      width: 115px !important
+      margin-right: 20px
+    .end
+      float: left
+      width: 115px !important
+      margin-right: 5px
+    .remove
+      float: left
+      width: 40px !important
+      text-align: center
+  #step4
+    .fields
+      margin-bottom: 20px
+      .control-group
+        margin-bottom: 5px
+      .btn.btn-primary.remove
+        float: right
+        i 
+          margin-right: 10px
+    .btn.btn-primary.add_nested_fields i
+      margin-right: 10px
+

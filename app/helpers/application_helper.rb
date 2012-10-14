@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ApplicationHelper
   def flash_class(level)
     case level
@@ -6,6 +7,13 @@ module ApplicationHelper
     when :notice then "info"
     when :success then "success"
     end
+  end
+
+  def currency_hash
+    {
+      "USD" => "$",
+      "EUR" => "€"
+    }
   end
 
   def form_error_messages(resource)
