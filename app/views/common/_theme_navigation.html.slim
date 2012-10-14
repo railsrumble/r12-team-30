@@ -27,10 +27,18 @@ ul
         i.icon-off.icon-white
         | Logout
   - else
-    li
-      a href=new_user_registration_path
+    li.dropdown
+      a.dropdown-toggle data-toggle="dropdown" href="#"
         i.icon-share-alt.icon-large
         | Sign Up
+      ul.dropdown-menu style="padding: 15px; padding-bottom: 0px;"
+        = form_tag user_registration_path do
+          input#user_real_name name="user[real_name]" placeholder="Real Name" style="margin-bottom: 15px;" type="text"
+          input#user_email name="user[email]" placeholder="Email" style="margin-bottom: 15px;" type="text"
+          input#user_password name="user[password]" placeholder="Password" style="margin-bottom: 15px;" type="password"
+          input#user_password_confirmation name="user[password_confirmation]" placeholder="Confirm Password" style="margin-bottom: 15px;" type="password"
+          input#sign-up.btn.btn-block type="submit" value="Sign Up"
+
     li.dropdown
       a.dropdown-toggle data-toggle="dropdown" href="#"
         i.icon-user.icon-large
