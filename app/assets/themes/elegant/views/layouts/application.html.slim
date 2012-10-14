@@ -15,9 +15,12 @@ html
     .container
       .row-fluid
         aside.span4.clearfix
-          nav.menu.pull-right= render 'common/theme_navigation'
+          nav.menu.pull-right
+            span.ribbon-dash.top.visible-desktop
+            = render 'common/theme_navigation'
+            span.ribbon-dash.bottom.visible-desktop
           - order = @store.orders.build
-          section.cart.pull-right= render 'orders/theme_form', store: @store, order:order
+          section.cart.pull-right= render 'orders/theme_form', store: @store, order: order
         section.main-content.span8
           = render 'common/flash_messages'
           = yield
