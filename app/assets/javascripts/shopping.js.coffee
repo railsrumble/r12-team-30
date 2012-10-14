@@ -1,7 +1,7 @@
 $ ->
 
   changeProductQuantity = (product_id, delta) ->
-    $product_container = $('section.products table [data-product=' + product_id + ']')
+    $product_container = $('#products table [data-product=' + product_id + ']')
     $quantity = $product_container.find('.quantity .value')
     price = $product_container.find('.price .value').html()
     name = $product_container.find('.name').html()
@@ -19,11 +19,11 @@ $ ->
     console.log("Cart: updating total " + total)
     $product_container.find('.total .value').html(total)
 
-  $cart = $("section.cart")
+  $cart = $("#cart")
 
   updateCart = (product_id, name, price, quantity) ->
     $product = $cart.find("[data-product=" + product_id + "]")
-    currency = $('.total span.currency').html()
+    currency = $('.total .currency').html()
     subtotal = (quantity * price).toFixed(2)
 
     if $product.length
