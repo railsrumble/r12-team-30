@@ -30,7 +30,6 @@ ul
       a.dropdown-toggle data-toggle="dropdown" href="#"
         i.icon-user.icon-large
         = "Login"
-        b.caret
       ul.dropdown-menu style="padding: 15px; padding-bottom: 0px;"
         = form_tag user_session_path do
           input#email name="user[email]" placeholder="Email" style="margin-bottom: 15px;" type="text"
@@ -38,7 +37,7 @@ ul
           input#remember-me name="user[remember_me]" style="float: left; margin-right: 10px;" type="checkbox" value="1"
           label.string.optional for="remember-me"
             | Remember me
-          input#sign-in.btn.btn-primary.btn-block type="submit" value="Sign In"
+          input#sign-in.btn.btn-block type="submit" value="Sign In"
 
         = link_to "Forgot your password?", new_password_path('user'), :class => 'btn btn-link'
 
