@@ -24,6 +24,7 @@ gem 'geocoder'
 
 group :development do
   gem 'rb-readline'
+  gem 'mailcatcher'
 end
 
 group :production do
