@@ -1,0 +1,140 @@
+.store
+  header
+    .row-fluid
+      .name.span12
+        h1= @store.name
+    .row-fluid
+      .description.span12
+        h2 = @store.short_description
+  section
+    .content.clearfix
+      .row-fluid
+        .leftsidebar.span4
+          - if @store.logo.present?
+            .row-fluid
+              .logo.span12
+                div= image_tag @store.logo.url(:avatar)
+          .row-fluid
+            .span2
+            .menu.span8
+              nav.menu
+                ul
+                  - if user_signed_in?
+                    li
+                      = "Welcome, "
+                      b
+                        = current_user.real_name
+                    li.spaced
+                      a href="#"
+                        i.icon-credit-card.icon-white
+                        | Your orders
+                    - if can? :edit, @store
+                      li.spaced
+                        a href=edit_store_path(@store)
+                          i.icon-edit.icon-white
+                          |  Edit Store
+                    li.spaced
+                      a href=edit_registration_path(current_user)
+                        i.icon-cog.icon-white
+                        | Account Settings
+                    li.spaced
+                      a href=destroy_user_session_path data-method="delete"
+                        i.icon-off.icon-white
+                        | Logout
+                  - else
+                    li
+                      a href=new_user_registration_path
+                        i.icon-share-alt.icon-large
+                        | Sign Up
+                    li.dropdown
+                      a.dropdown-toggle data-toggle="dropdown" href="#"
+                        i.icon-user.icon-large
+                        = "Login"
+                        b.caret
+                      ul.dropdown-menu style="padding: 15px; padding-bottom: 0px;"
+                        = form_tag user_session_path do
+                          input#email name="user[email]" placeholder="Email" style="margin-bottom: 15px;" type="text"
+                          input#password name="user[password]" placeholder="Password" style="margin-bottom: 15px;" type="password"
+                          input#remember-me name="user[remember_me]" style="float: left; margin-right: 10px;" type="checkbox" value="1"
+                          label.string.optional for="remember-me"
+                            | Remember me
+                          input#sign-in.btn.btn-primary.btn-block type="submit" value="Sign In"
+
+                        = link_to "Forgot your password?", new_password_path('user'), :class => 'btn btn-link'
+            .span2
+
+        .description.span4= @store.description
+        .gallery.span4
+          #store_gallery.gallery.carousel.carousel-fade
+            - if @store.pictures.present?
+              .carousel-inner
+                .item.active= image_tag @store.pictures.shift.image
+                - @store.pictures.each do |store|
+                  .item
+                    = image_tag(store.image)
+    section
+      .infos.clearfix
+        .span4
+          br
+        .span4
+          #store_map.map.pull-left data-lat="#{@store.latitude}" data-lng="#{@store.longitude}"
+            a href=@store.link_to_google_maps
+
+        .details.span4
+          .address
+            = @store.address
+          .contact
+            | Phone 
+            = @store.contact_info
+          ul.opening-times
+            | Opening Times
+            - @store.opening_times.each do |ot|
+              li
+                span= ot.formatted_day
+                span= ot.formatted_start
+                | -
+                span= ot.formatted_end
+    section
+      .shop
+        .span4
+          .shoppingcart
+            br
+        .span8.products
+          h1.title Shop
+          table.table.table-condensed
+            thead
+              tr
+                th colspan="2" Description
+                th.centered Price
+                th.centered Qty
+                th.centered colspan="3" Total
+            tbody
+              - ProductTaxonomy.all.each do |taxonomy|
+                - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
+                - if taxonomy_products.any?
+
+                  - taxonomy_products.each do |product|
+                    tr.product
+                      td.taxonomy
+                        = image_tag(taxonomy.icon_url)
+                      td.name
+                        = product.name
+                      td.price.centered
+                        = product.price
+                        = @store.currency
+                      td.quantity.centered
+                        a.control href="#" data-action="remove-from-cart"
+                          i.icon-minus-sign
+                        = "0"
+                        a.control href="#" data-action="add-to-cart"
+                          i.icon-plus-sign
+                      td.total.centered colspan="2"
+                        = "0"
+                      td.collapse-control
+                        a.collapse.control href="#description-#{product.id}"
+                          i.icon-chevron-down
+                    tr 
+                      td.description colspan="7"
+                        div.collapsed id="description-#{product.id}"= product.description
+
+

@@ -1,0 +1,23 @@
+@font-face {
+    font-family: 'arbutus_slabregular';
+    src: url('/assets/arbutusslab-regular-webfont.eot');
+    src: url('/assets/arbutusslab-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/arbutusslab-regular-webfont.woff') format('woff'),
+         url('/assets/arbutusslab-regular-webfont.ttf') format('truetype'),
+         url('/assets/arbutusslab-regular-webfont.svg#arbutus_slabregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'frescaregular';
+    src: url('/assets/fresca-regular-webfont.eot');
+    src: url('/assets/fresca-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/assets/fresca-regular-webfont.woff') format('woff'),
+         url('/assets/fresca-regular-webfont.ttf') format('truetype'),
+         url('/assets/fresca-regular-webfont.svg#frescaregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

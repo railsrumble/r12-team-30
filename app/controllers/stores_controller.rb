@@ -9,7 +9,7 @@ class StoresController < ApplicationController
   end
 
   def show
-    theme "elegant"
+    theme "evergreen"
   end
 
   def manage_orders

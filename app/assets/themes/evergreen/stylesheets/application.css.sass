@@ -1,0 +1,124 @@
+$sansFontFamily:  "arbutus_slabregular", sans-serif
+$serifFontFamily: "frescaregular", serif
+$monoFontFamily:  Monaco, Menlo, Consolas, "Courier New", monospace
+
+@import bootstrap
+@import bootstrap-responsive
+@import font-awesome
+
+// fix for font-awesome, which does not remove glyphicons from dropdowns
+a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
+.nav > .active > a > [class^="icon-"],
+.nav > .active > a > [class*=" icon-"],
+.dropdown-menu > li > a:hover > [class^="icon-"],
+.dropdown-menu > li > a:hover > [class*=" icon-"],
+.dropdown-menu > .active > a > [class^="icon-"],
+.dropdown-menu > .active > a > [class*=" icon-"]
+  background-image: none
+
+.control
+  i
+    color: $textColor
+  &:hover
+    i
+      text-decoration: none
+
+// apply a natural box layout model to all elements
+*
+  +box-sizing("border-box")
+
+table
+  .centered
+    text-align: center
+
+.collapsed
+  display: none
+
+body
+  .full-container
+    width: 100% !important
+  header
+    min-height: 180px
+    +gradient-vertical(#A4DB42, #73B115)
+    text-align: center
+    h1
+      color: white
+      font-family: $serifFontFamily
+      font-size: 60px
+      padding-top: 10px
+    h2
+      color: black
+      font-family: $serifFontFamily
+      font-size: 40px
+  section
+    .content
+      min-height: 285px
+      .leftsidebar
+        margin-top: 20px
+        .logo
+          img
+            margin-left: auto
+            margin-right: auto
+            margin-bottom: 15px
+            display: block
+        .menu
+          margin-bottom: 15px
+          +border-radius(15px)
+          +gradient-vertical(#A4DB42, #73B112)
+          ul
+            list-style: none inside none
+            li
+              line-height: 30px
+              &.spaced
+                padding-left: 10px
+              a
+                color: $black
+                i
+                  margin-right: 8px
+                &:hover
+                  i
+                    text-decoration: none
+      .description
+        padding-top: 15px
+        padding-left: 5px
+        padding-RIGHT: 5px
+        padding-bottom: 10px
+      .gallery
+        .gallery
+          margin-top: 15px
+        img
+          max-width: 350px
+          max-height: 250px
+          margin-left: auto
+          margin-right: auto
+    .infos
+      background-color: #77B315
+      +box-shadow(0px 3px #888)
+      min-height: 350px
+      .map
+        margin-top: 20px
+      .details
+        margin-top: 25px
+        font-family: $serifFontFamily
+        font-weight: bold
+        text-align: center
+        font-size: 18px
+        .opening-times
+          list-style: none inside none
+          margin-top: 10px
+          li
+            span
+              display: inline-block
+              margin: 0 8px
+    .shop
+      h1
+        color: #77B315
+        font-family: $serifFontFamily
+      thead
+        background-color: #77B315
+        color: white
+        font-weight: bold
+        text-transform: uppercase
+
+
+
