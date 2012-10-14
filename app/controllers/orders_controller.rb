@@ -37,6 +37,10 @@ class OrdersController < ApplicationController
     redirect_to manage_orders_store_path(@order.store)
   end
 
+  def destroy
+    destroy! { manage_orders_store_path(@order.store) }
+  end
+
   private
 
   def find_by_id
