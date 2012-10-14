@@ -2,7 +2,7 @@ class NotificationObserver < ActiveRecord::Observer
   observe Order
 
   def after_create(order)
-    OrderMailer.order_received(order.owner).deliver
+    OrderMailer.order_received(order).deliver
   end
 
   def after_update(order)

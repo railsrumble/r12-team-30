@@ -11,12 +11,12 @@ class OrdersController < ApplicationController
 
     @order = Order.new(params[:order])
     @order.customer = current_user
-    if @order.save
-      products.each do |id, quantity|
-        item = OrderItem.new(order: @order, product: Product.find(id), quantity: quantity)
-        @order.items << item
-      end
-    else
+    products.each do |id, quantity|
+      item = OrderItem.new(order: @order, product: Product.find(id), quantity: quantity)
+      @order.items << item
+    end
+
+    unless @order.save
       render 'order_failed'
     end
   end

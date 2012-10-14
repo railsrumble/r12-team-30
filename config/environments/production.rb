@@ -71,4 +71,6 @@ Foodstrap::Application.configure do
     :user_name => "ju.liu@welaika.com",
     :password => "8810cd4c-47ff-4009-affc-9a2f9f52c3d2"
   }
+
+  config.action_mailer.default_url_options = { :host => 'foodstrap.me' }
 end
