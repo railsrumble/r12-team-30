@@ -17,6 +17,11 @@ a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
   background-image: none
 
 $red: #500000
+$bg_img: "elegant/images/background.png"
+$container_bg_img: "elegant/images/light.png"
+$menu_bg_img: "elegant/images/menu.png"
+$gallery_bg_img: "elegant/images/gallery.png"
+$separator_bg_img: "elegant/images/separator.png"
 
 // apply a natural box layout model to all elements
 *
@@ -30,29 +35,15 @@ table
   display: none
 
 
-
-.carousel .item
-  -webkit-transition: opacity 3s !important
-  -moz-transition: opacity 3s !important
-  -ms-transition: opacity 3s !important
-  -o-transition: opacity 3s !important
-  transition: opacity 3s !important
-.carousel.carousel-fade .item
-  +opacity(0)
-
-.carousel.carousel-fade .active.item
-  +opacity(100)
-
-
 body
-  background-image: image-url('elegant/images/background.png')
+  background-image: image-url($bg_img)
   .container
-    background-image: image-url('elegant/images/light.png')
+    background-image: image-url($container_bg_img)
     background-size: 100% // resize bg
     background-repeat: no-repeat
     position: relative
     .menu
-      background-image: image-url('elegant/images/menu.png')
+      background-image: image-url($menu_bg_img)
       background-repeat: no-repeat
       color: white
       margin-right: -40px
@@ -120,7 +111,7 @@ body
             margin-top: 35px
             .description
             .gallery
-              background-image: image-url('elegant/images/gallery.png')
+              background-image: image-url($gallery_bg_img)
               background-size: 100%
               background-repeat: no-repeat
               height: 307px
@@ -153,7 +144,7 @@ body
               .collapse-control
                 vertical-align: bottom
           .separator
-            background-image: image-url('elegant/images/separator.png')
+            background-image: image-url($separator_bg_img)
             background-repeat: no-repeat
             height: 30px
             margin: 0 auto
