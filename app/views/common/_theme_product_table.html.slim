@@ -25,12 +25,12 @@ table.table.table-condensed
               span.value= "0"
               a.control href="#" data-action="add-to-cart"
                 i.icon-plus-sign
-            td.total.centered colspan="2"
+            td.total.centered
               span.value= "0"
               span.currency= store.currency
             td.collapse-control
               a.collapse.control href="#description-#{product.id}"
                 i.icon-chevron-down
           tr 
-            td.description colspan="7"
+            td.description colspan="6"
               div.collapsed id="description-#{product.id}"= product.description
