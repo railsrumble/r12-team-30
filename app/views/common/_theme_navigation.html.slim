@@ -12,7 +12,12 @@ ul
       li.spaced
         a href=edit_store_path(@store)
           i.icon-wrench.icon-white
-          |  Edit Store
+          | Edit Store
+      - if can? :manage_orders, @store
+        li.spaced
+          a href=manage_orders_store_path(@store)
+            i.icon-edit.icon-white
+            | Manage Orders
     li.spaced
       a href=edit_registration_path(current_user)
         i.icon-cog.icon-white
