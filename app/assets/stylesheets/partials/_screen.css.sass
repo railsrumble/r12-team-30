@@ -1,5 +1,5 @@
 // fix for font-awesome, which does not remove glyphicons from dropdowns
-.icon-white,
+a > [class^="icon-"], a > [class*=" icon-"], .icon-white,
 .nav > .active > a > [class^="icon-"],
 .nav > .active > a > [class*=" icon-"],
 .dropdown-menu > li > a:hover > [class^="icon-"],
@@ -7,6 +7,10 @@
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"]
   background-image: none
+a
+  &:hover
+    i
+      text-decoration: none
 
 
 // fix for btn-block, overriden by bootstrap/forms
