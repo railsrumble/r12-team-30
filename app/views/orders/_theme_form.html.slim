@@ -7,11 +7,13 @@ span.ribbon-dash.top.visible-desktop
       | Total: 
       span.amount 0
       span.currency= store.currency
-  table.products.table
+  table.products.table.table-condensed
 .order
   h4
     i.icon-check.icon-white
     | ORDER
+  .alert.alert-error.hidden
+  .alert.alert-success.hidden
   = simple_form_for(order, :remote => true) do |f|
     = hidden_field(:order_products, :ids, value:'')
     = hidden_field(:order_products, :quantities, value:'')
