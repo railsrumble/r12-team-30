@@ -87,7 +87,7 @@ body
               display: inline-block
               margin: 0 8px
     .shop
-      h1
+      .title
         color: #77B315
         font-family: $serifFontFamily
       thead
@@ -95,6 +95,20 @@ body
         color: white
         font-weight: bold
         text-transform: uppercase
+      .products
+        td
+          border-color: $grayLight
+        .product
+          .name, .price, .quantity, .total
+            line-height: 32px
+          .quantity
+            .control
+              margin: 0 5px
+        .description
+          border-top: 0
+          padding: 5px 30px
+        .collapse-control
+          vertical-align: bottom
 
 
 
