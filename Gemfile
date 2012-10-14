@@ -20,6 +20,7 @@ gem 'devise'
 gem 'cancan'
 gem 'nested_form'
 gem 'themes_for_rails'
+gem 'geocoder'
 
 group :development do
   gem 'rb-readline'

@@ -14,7 +14,10 @@ class Store < ActiveRecord::Base
   accepts_nested_attributes_for :opening_times, allow_destroy: true
   accepts_nested_attributes_for :products, allow_destroy: true
 
-  validates_presence_of :name, :address, :description
+  validates_presence_of :name, :address, :description, :currency
 
   mount_uploader :logo, LogoUploader
+
+  geocoded_by :address
+  after_validation :geocode
 end

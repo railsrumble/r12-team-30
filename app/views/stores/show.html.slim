@@ -41,8 +41,9 @@ section
                 = product.name
               td.description
                 = product.description
-              td.price
-                = product.price
+              td
+                span.price= product.price
+                span.currency= @store.currency
               td.actions
                 span.quantity 0
                 button.add +
@@ -55,7 +56,7 @@ section.cart
   h4 TOTAL
   .total
     span.amount 0
-    span.currency $
+    span.currency= @store.currency
 
 - if can? :edit, @store
   a.btn.btn-primary.btn-large href=edit_store_path(@store)
