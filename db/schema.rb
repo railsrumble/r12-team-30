@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121013224444) do
+ActiveRecord::Schema.define(:version => 20121014090918) do
 
   create_table "opening_times", :force => true do |t|
     t.integer  "store_id"
@@ -65,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20121013224444) do
     t.datetime "updated_at",        :null => false
     t.integer  "owner_id"
     t.string   "logo"
+    t.float    "latitude"
+    t.float    "longitude"
   end
 
   add_index "stores", ["owner_id"], :name => "index_stores_on_owner_id"
