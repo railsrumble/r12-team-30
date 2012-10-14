@@ -10,6 +10,14 @@ class StoresController < ApplicationController
 
   def show
     theme "elegant"
+<<<<<<< HEAD
+=======
+  end
+
+  def manage_orders
+    @store = Store.find(params[:id])
+    @orders = @store.orders
+>>>>>>> master
   end
 
 end

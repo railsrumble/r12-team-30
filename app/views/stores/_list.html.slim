@@ -6,6 +6,9 @@ header.name
       = image_tag store.logo.url(:avatar), :class => "img-polaroid"
   = store.short_description
 footer.details.clearfix
-  a.pull-right.btn.btn-primary href=store_path(store) 
-  	i.icon-info-sign
-  	|  View details
+  .btn-group.pull-right
+    = link_to "View store", store_path(store), :class => "btn btn-primary"
+    - if can? :edit, store
+      = link_to "Edit store", edit_store_path(store), :class => "btn btn-primary"
+    - if can? :manage_orders, store
+      = link_to "Manage orders", manage_orders_store_path(store), :class => "btn btn-primary"

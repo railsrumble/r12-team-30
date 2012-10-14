@@ -3,6 +3,7 @@
 #= require bootstrap
 #= require jquery_nested_form
 #= require_tree .
+#= require ../../../javascripts/gmaps.js
 
 # $('a[data-toggle="collapse"]').click (e) ->
 #   e.preventDefault
@@ -22,3 +23,16 @@ $ ->
 
 
   $('#store_gallery').carousel()
+
+  map_lat = $('#store_map').attr('data-lat')
+  map_lng = $('#store_map').attr('data-lng')
+  url = GMaps.staticMapURL({
+    size: [288, 296],
+    lat: map_lat,
+    lng: map_lng,
+    markers: [
+      {lat: map_lat, lng: map_lng},
+    ]
+  });
+
+  $('<img/>').attr('src', url).appendTo('#store_map a')

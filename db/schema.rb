@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014090918) do
+ActiveRecord::Schema.define(:version => 20121014122830) do
 
   create_table "opening_times", :force => true do |t|
     t.integer  "store_id"
@@ -23,6 +23,31 @@ ActiveRecord::Schema.define(:version => 20121014090918) do
   end
 
   add_index "opening_times", ["store_id"], :name => "index_opening_times_on_store_id"
+
+  create_table "order_items", :force => true do |t|
+    t.integer  "order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "order_items", ["order_id"], :name => "index_order_items_on_order_id"
+  add_index "order_items", ["product_id"], :name => "index_order_items_on_product_id"
+
+  create_table "orders", :force => true do |t|
+    t.integer  "store_id"
+    t.datetime "pickup_time"
+    t.string   "status"
+    t.string   "customer_note"
+    t.string   "store_note"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "customer_id"
+  end
+
+  add_index "orders", ["customer_id"], :name => "index_orders_on_customer_id"
+  add_index "orders", ["store_id"], :name => "index_orders_on_store_id"
 
   create_table "product_taxonomies", :force => true do |t|
     t.string   "name"

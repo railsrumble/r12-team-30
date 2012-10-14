@@ -56,17 +56,18 @@
                     td.total.centered colspan="2"
                       = "0"
                     td.collapse-control
-                      a.collapse href="#description-#{product.id}"
+                      a.collapse.control href="#description-#{product.id}"
                         i.icon-chevron-down
-                  tr.product 
-                    td.description colspan="6"
+                  tr 
+                    td.description colspan="7"
                       div.collapsed id="description-#{product.id}"= product.description
 
     .separator
 
     .infos.clearfix
-      .map.pull-left
-        = theme_image_tag('map.png')
+
+      #store_map.map.pull-left data-lat="#{@store.latitude}" data-lng="#{@store.longitude}"
+        a href=@store.link_to_google_maps
       .details.pull-right
         .address
           = @store.address

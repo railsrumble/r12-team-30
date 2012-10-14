@@ -7,6 +7,7 @@ class Store < ActiveRecord::Base
   has_many :pictures, class_name: StorePicture
   has_many :opening_times
   has_many :products
+  has_many :orders
 
   has_one :theme
 
@@ -20,4 +21,8 @@ class Store < ActiveRecord::Base
 
   geocoded_by :address
   after_validation :geocode
+
+  def link_to_google_maps
+    "https://maps.google.com/maps?q=" + CGI::escape(address)
+  end
 end
