@@ -162,16 +162,16 @@ $wellBackground: whitesmoke !default
 $navbarCollapseWidth: 979px !default
 
 $navbarHeight: 50px !default
-$navbarBackgroundHighlight: lighten(rgba($my_bg_navbar,1), 8)
-$navbarBackground: $my_bg_navbar
-$navbarBorder: darken(rgba($my_bg_navbar,1), 12)
+$navbarBackgroundHighlight: $bodyBackground
+$navbarBackground: $bodyBackground
+$navbarBorder: $bodyBackground
 
-$navbarText: $white 
-$navbarLinkColor: $white 
-$navbarLinkColorHover: #F5F5F5 
-$navbarLinkColorActive: $white 
+$navbarText: $textColor 
+$navbarLinkColor: $linkColor 
+$navbarLinkColorHover: $linkColorHover 
+$navbarLinkColorActive: $linkColorHover
 $navbarLinkBackgroundHover: transparent !default
-$navbarLinkBackgroundActive: darken($navbarBackground, 5%) !default
+$navbarLinkBackgroundActive: transparent
 
 $navbarBrandColor: $navbarLinkColor !default
 
@@ -184,8 +184,6 @@ $navbarInverseText: $grayLight !default
 $navbarInverseLinkColor: $grayLight !default
 $navbarInverseLinkColorHover: $white !default
 $navbarInverseLinkColorActive: $navbarInverseLinkColorHover !default
-$navbarLinkBackgroundHover:       rgba(0,0,0,.2)
-$navbarLinkBackgroundActive:      rgba(0,0,0,.2)
 
 $navbarInverseSearchBackground: lighten($navbarInverseBackground, 25%) !default
 $navbarInverseSearchBackgroundFocus: $white !default
