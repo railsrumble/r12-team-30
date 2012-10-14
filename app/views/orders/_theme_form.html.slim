@@ -16,7 +16,7 @@ span.ribbon-dash.top.visible-desktop
     = hidden_field(:order_products, :ids, value:'')
     = hidden_field(:order_products, :quantities, value:'')
     = f.input :store_id, :as => :hidden, :value => store.id
-    = f.input :pickup_time, minute_step: 15, :label => "", :input_html => {:preview_version => :thumb}
+    = f.input :pickup_time, minute_step: 15, discard_year: true, use_short_month: true, order: [:day, :month], datetime_separator: "", time_separator: ""
     = f.input :customer_note
-    = f.button :submit, :class => "btn btn-primary"
+    = f.button :submit, :class => "btn"
 span.ribbon-dash.bottom.visible-desktop
