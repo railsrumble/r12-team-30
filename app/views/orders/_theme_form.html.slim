@@ -1,0 +1,22 @@
+span.ribbon-dash.top.visible-desktop
+.products
+  h4
+    i.icon-shopping-cart.icon-white
+    | CART
+    span.total.pull-right
+      | Total: 
+      span.amount 0
+      span.currency= store.currency
+  table.products.table
+.order
+  h4
+    i.icon-check.icon-white
+    | ORDER
+  = simple_form_for(order, :remote => true) do |f|
+    = hidden_field(:order_products, :ids, value:'')
+    = hidden_field(:order_products, :quantities, value:'')
+    = f.input :store_id, :as => :hidden, :value => store.id
+    = f.input :pickup_time, minute_step: 15, :label => "", :input_html => {:preview_version => :thumb}
+    = f.input :customer_note
+    = f.button :submit, :class => "btn btn-primary"
+span.ribbon-dash.bottom.visible-desktop

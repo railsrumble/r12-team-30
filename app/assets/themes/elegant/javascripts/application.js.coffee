@@ -4,6 +4,7 @@
 #= require jquery_nested_form
 #= require_tree .
 #= require ../../../javascripts/gmaps.js
+#= require ../../../javascripts/shopping
 
 # $('a[data-toggle="collapse"]').click (e) ->
 #   e.preventDefault
