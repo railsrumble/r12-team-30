@@ -9,10 +9,11 @@
           .nav-collapse.collapse
             .pull-right
               ul.nav.pull-right
-                li
-                  a href="#{stores_path}?user=true"
-                    i.icon-heart.icon-large
-                    | My Stores
+                - if user_signed_in?
+                  li
+                    a href="#{stores_path}?user=true"
+                      i.icon-heart.icon-large
+                      | My Stores
                 li
                   a href=stores_path
                     i.icon-glass.icon-large
