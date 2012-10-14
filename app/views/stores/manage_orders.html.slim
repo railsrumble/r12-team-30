@@ -7,6 +7,9 @@ section.manage_orders
     div.landing id="order_#{order.id}" data-order=order.id
       .synthetic
         .customer_block
+          h4.spaced
+            | order n°
+            = order.id
           h4 CUSTOMER
           span.customer= order.customer.name
         .pickup_block

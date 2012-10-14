@@ -13,7 +13,7 @@
 
     .content.clearfix
       .description.span7= @store.description
-      #store_gallery.gallery.pull-right.carousel.carousel-fade
+      #store_gallery.gallery.pull-right.carousel.carousel-fade.fade.in
         - if @store.pictures.present?
           .carousel-inner
             .item.active= image_tag @store.pictures.shift.image
