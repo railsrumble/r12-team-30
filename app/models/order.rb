@@ -8,7 +8,10 @@ class Order < ActiveRecord::Base
 
   after_create :set_order_status
 
-  validate :pickup_time_not_past
+  validate :pickup_time_not_past, on: :create, on: :create
+
+  default_scope order("pickup_time")
+  scope :manageable, where("orders.status = 'New' OR orders.status = 'Confirmed'")
 
   def total
     items.inject(0) do |result, item|
@@ -36,14 +39,13 @@ class Order < ActiveRecord::Base
     ]
   end
 
-  scope :manageable, where(status: [ Order.status_new, Order.status_confirmed ])
 
   def confirm!
-    self.update_attributes(:status => Order.status_confirmed)
+    self.update_attribute(:status, Order.status_confirmed)
   end
 
   def complete!
-    self.update_attributes(:status => Order.status_completed)
+    self.update_attribute(:status, Order.status_completed)
   end
 
   def is_confirmable?

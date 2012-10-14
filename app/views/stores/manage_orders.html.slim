@@ -11,7 +11,15 @@ section.manage_orders
           span.customer= order.customer.name
         .pickup_block
           h4 PICKUP TIME
-          span= order.pickup_time
+          - pickup_text = distance_of_time_in_words_to_now(order.pickup_time)
+          span
+            - if order.pickup_time < Time.now
+              = "#{pickup_text} ago"
+            - else
+              = "in #{pickup_text}"
+          | -
+          span= order.pickup_time.strftime("%H:%M")
+
         .total_block
           h4 TOTAL
           .total
