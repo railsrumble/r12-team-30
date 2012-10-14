@@ -4,10 +4,10 @@ ul
       = "Welcome, "
       b
         = current_user.real_name
-    li.spaced
-      a href="#"
-        i.icon-check.icon-white
-        | Your orders
+    / li.spaced
+    /   a href="#"
+    /     i.icon-check.icon-white
+    /     | Your orders
     - if can? :edit, @store
       li.spaced
         a href=edit_store_path(@store)
