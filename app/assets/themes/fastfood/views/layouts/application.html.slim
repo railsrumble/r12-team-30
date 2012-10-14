@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    title= site_name
+    = theme_stylesheet_link_tag "fonts", :media => "all"
+    = theme_stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "http://maps.googleapis.com/maps/api/js?key=AIzaSyBZDkdbRMOr3B2RBVUOkD7bvq5FR8AfWZA&sensor=false"
+    = theme_javascript_include_tag "application"
+    = csrf_meta_tags
+
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+  body
+    .container.full-container.clearfix
+      section
+        = render 'common/flash_messages'
+        = yield

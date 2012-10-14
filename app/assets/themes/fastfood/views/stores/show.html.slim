@@ -1,0 +1,101 @@
+.store
+  .row-fluid
+    .sidebar.tubo.span4
+      .span2
+        br
+      .span8
+        .row-fluid
+          .logo.board.span12
+            div= image_tag @store.logo.url(:avatar)
+        .row-fluid
+          .menu.board.span12
+            nav.menu
+              = render 'common/theme_navigation'
+        .row-fluid
+          .shoppingcart.board.span12
+            - order = @store.orders.build
+            = render 'orders/theme_form', store: @store, order: order
+      .span2
+        br
+    .content.span8
+      .row-fluid
+        .tubo.span9
+          .row-fluid
+            .title.board.span12
+              h1= @store.name
+              h2 = @store.short_description
+          .row-fluid
+            .shopping.board.span12
+              h2.title Shop
+              table.table.table-condensed
+                thead
+                  tr
+                    th colspan="2" Description
+                    th.centered Price
+                    th.centered Qty
+                    th.centered colspan="3" Total
+                tbody
+                  - ProductTaxonomy.all.each do |taxonomy|
+                    - taxonomy_products = @store.products.filter_by_taxonomy(taxonomy)
+                    - if taxonomy_products.any?
+
+                      - taxonomy_products.each do |product|
+                        tr.product
+                          td.taxonomy
+                            = image_tag(taxonomy.icon_url)
+                          td.name
+                            = product.name
+                          td.price.centered
+                            = product.price
+                            = @store.currency
+                          td.quantity.centered
+                            a.control href="#" data-action="remove-from-cart"
+                              i.icon-minus-sign
+                            = "0"
+                            a.control href="#" data-action="add-to-cart"
+                              i.icon-plus-sign
+                          td.total.centered colspan="2"
+                            = "0"
+                          td.collapse-control
+                            a.collapse.control href="#description-#{product.id}"
+                              i.icon-chevron-down
+                        tr 
+                          td.description colspan="7"
+                            div.collapsed id="description-#{product.id}"= product.description
+          .row-fluid
+            .presentation.board.span12
+              .description.span6= @store.description
+              .gallery.span6
+                #store_gallery.gallery.carousel.carousel-fade
+                  - if @store.pictures.present?
+                    .carousel-inner
+                      .item.active= image_tag @store.pictures.shift.image
+                      - @store.pictures.each do |store|
+                        .item
+                          = image_tag(store.image)
+          .row-fluid
+            .maps.board.span12
+              .span7
+                #store_map.map.pull-left data-lat="#{@store.latitude}" data-lng="#{@store.longitude}"
+                  a href=@store.link_to_google_maps
+
+              .details.span5
+                .address
+                  = @store.address
+                .contact
+                  | Phone 
+                  = @store.contact_info
+                ul.opening-times
+                  | Opening Times
+                  - @store.opening_times.each do |ot|
+                    li
+                      span= ot.formatted_day
+                      span= ot.formatted_start
+                      | -
+                      span= ot.formatted_end
+          .row-fluid
+            .footer.board.span12
+              = render 'common/theme_footer'
+
+        .span3
+          br

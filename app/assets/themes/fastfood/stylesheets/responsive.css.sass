@@ -1,0 +1,93 @@
+@import bootstrap
+@import bootstrap-responsive
+
+@media (min-width: 1200px)
+  body
+    .container
+      .main-content
+        .store
+          header
+            .name
+              h1
+                font-size: 80px !important
+                line-height: 80px
+          section
+            .ribbon
+              font-size: 24px
+              height: 100px
+              line-height: 24px
+
+@media (min-width: 768px) and (max-width: 979px)
+  body
+    .container
+      .main-content
+        .store
+          header
+            .name
+              h1
+                font-size: 50px !important
+                line-height: 50px
+          section
+          .ribbon
+            font-size: 24px
+            height: 100px
+            line-height: 24px
+
+@media (min-width: 500px) and (max-width: 767px)
+  body
+    .container
+      .main-content
+        .store
+          header
+            .name
+              h1
+                font-size: 30px !important
+                line-height: 30px
+          section
+            .ribbon
+              font-size: 19px
+              line-height: 21px
+            .content
+              .gallery
+                float: none
+                margin: 30px auto
+                width: 291px
+
+@media (max-width: 500px)
+  body
+    .container
+      .main-content
+        .store
+          header
+            .name
+              h1
+                font-size: 30px !important
+                line-height: 30px
+          section
+            .ribbon
+              background-image: none !important
+              color: $black !important
+              font-size: 19px
+              line-height: 21px
+              padding: 0 !important
+              text-shadow: none
+              width: 100%
+            .content
+              .gallery
+                background-image: none !important
+                float: none
+                margin: 30px auto
+                width: 291px
+                img
+                  width: 200px !important
+                  height: 200px !important
+
+.carousel.carousel-fade .item
+  -webkit-transition: opacity 3s ease-in-out !important
+  -moz-transition: opacity 3s ease-in-out !important
+  -ms-transition: opacity 3s ease-in-out !important
+  -o-transition: opacity 3s ease-in-out !important
+  transition: opacity 3s ease-in-out !important
+
+.carousel.carousel-fade .active.item
+  +opacity(100)
