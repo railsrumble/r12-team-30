@@ -20,7 +20,7 @@
       = form.input :description, :input_html => {:class => "large", :rows => "5"}
 
       = form.fields_for :theme do |theme_form|
-        = theme_form.association :template
+        = theme_form.association :template, include_blank: false
         = theme_form.input :font, as: :grouped_select, collection: Theme.available_fonts, :group_method => :last, :label_method => :titleize, :value_method => :downcase
 
       input.btn.btn-primary.next.tab value="next step >" data-nextdiv="step2"
