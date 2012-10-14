@@ -57,9 +57,12 @@
     section
       .shop.clearfix
         .span4
-          .shoppingcart#cart.cart
-            - order = @store.orders.build
-            = render 'orders/theme_form', store: @store, order: order
+          - if user_signed_in?
+            .shoppingcart#cart.cart
+              - order = @store.orders.build
+              = render 'orders/theme_form', store: @store, order: order
+          - else
+            | &nbsp;
         .span8.products#products
           h1.title Shop
           = render 'common/theme_product_table', store: @store

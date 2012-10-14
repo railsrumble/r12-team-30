@@ -19,8 +19,9 @@ html
             span.ribbon-dash.top.visible-desktop
             = render 'common/theme_navigation'
             span.ribbon-dash.bottom.visible-desktop
-          - order = @store.orders.build
-          section.cart.pull-right= render 'orders/theme_form', store: @store, order: order
+          - if user_signed_in?
+            - order = @store.orders.build
+            section.cart.pull-right= render 'orders/theme_form', store: @store, order: order
         section.main-content.span8
           = render 'common/flash_messages'
           = yield
