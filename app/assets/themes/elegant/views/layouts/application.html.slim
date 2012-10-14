@@ -21,7 +21,7 @@ html
             span.ribbon-dash.bottom.visible-desktop
           - if user_signed_in?
             - order = @store.orders.build
-            section.cart.pull-right= render 'orders/theme_form', store: @store, order: order
+            section.cart.pull-right#cart= render 'orders/theme_form', store: @store, order: order
         section.main-content.span8
           = render 'common/flash_messages'
           = yield
