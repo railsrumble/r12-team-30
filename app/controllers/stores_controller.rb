@@ -9,6 +9,7 @@ class StoresController < ApplicationController
   end
 
   def show
+    store_location
     @store = Store.find(params[:id])
     if @store.theme.present?
       theme @store.theme.template.template
