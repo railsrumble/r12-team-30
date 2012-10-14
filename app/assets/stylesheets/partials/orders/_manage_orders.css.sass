@@ -1,0 +1,100 @@
+.manage_orders
+  .table-striped tbody tr:nth-child(2n+1) td, .table-striped tbody tr:nth-child(2n+1) th 
+    background-color: #a89960
+    color: white
+  .table-striped td, .table-striped th
+    border: 0
+  tr
+    .quantity, .price, .subtotal
+      text-align: center
+    &.header
+      h5
+        color: white
+        font-size: 20px
+        margin: 0
+
+  .landing
+    padding: 15px
+    margin-bottom: 20px
+    background: none repeat scroll 0 0 #ECDDA0
+    border-radius: 6px 6px 6px 6px
+    margin-left: auto
+    margin-right: auto
+    max-width: 960px
+  .order_details
+    display: none 
+  .customer_block, .pickup_block, .total_block, .status_block
+    float: left
+    margin-right: 10px
+    h4
+      float: left
+      margin: 0
+      line-height: 30px
+    span
+      margin: 0 5px
+      line-height: 34px
+  .open_details
+    float: left
+    width: 40px
+    font-size: 25px
+    line-height: 30px
+    text-align: left
+    &:hover
+      cursor: pointer
+  .customer_block
+    width: 460px
+  .pickup_block
+    width: 280px
+  .total_block
+    width: 120px
+  .status_block
+    width: 100%
+    .status, .buttons
+      border: 0 none
+      color: white
+      line-height: 27px
+      font-weight: bold
+      background-image: none
+      background-color: #a89960
+      border-radius: 8px
+      box-shadow: 1px 1px 0 white
+      text-shadow: none
+      &.ok
+        background-color: #ffd000
+        color: $grayDark
+    .status 
+      background-color: #FFD000
+      padding: 0px 8px !important
+    form
+      margin: 0
+    form, span, #reject
+      float: right
+      &.status 
+        float: left
+    #reject
+      padding: 0px 8px !important
+      margin: 0 5px
+    input
+      padding: 5px 8px !important
+      margin: 0 5px
+  .customer_note
+    float: left !important
+  .notes-form
+    h4, .optional, .btn
+      float: left
+    h4
+      margin: 5px 0
+    input
+      margin-left: 10px
+    .btn
+      border: 0 none
+      color: white
+      line-height: 27px
+      font-weight: bold
+      background-image: none
+      background-color: #a89960
+      border-radius: 8px
+      box-shadow: 1px 1px 0 white
+      text-shadow: none
+    
+
