@@ -19,17 +19,16 @@ input, textarea
     display: inline-block
     margin-left: 5px
     font-weight: bold
-  .btn.btn-primary.prev.tab 
+  .btn.prev.tab 
     float: left
     width: 100px
-  .btn.btn-primary.next.tab 
+  .btn.next.tab 
     float: right
     width: 100px
-    &.finish
-      background-color: #FFD000
-      background-image: linear-gradient(to bottom, #FFD000, #FFD000)
-      border-color: #FFD000 #FFD000 #FFE111
-      color: $grayDark
+  // .finish
+  //   background-color: #FFD000 
+  //   border-color: #FFD000
+  //   color: $grayDark
   #step2
     .control-group.file.optional
       float: left
@@ -80,10 +79,15 @@ input, textarea
       margin-bottom: 20px
       .control-group
         margin-bottom: 5px
-      .btn.btn-primary.remove
+      .btn.remove
         float: right
         i 
           margin-right: 10px
-    .btn.btn-primary.add_nested_fields i
+    .btn.add_nested_fields i
       margin-right: 10px
-
+.simple_form.form-horizontal
+  position: relative
+  .btn.next.tab.finish
+    position: absolute
+    top: 150px
+    right: 0

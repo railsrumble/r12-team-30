@@ -1,3 +1,3 @@
-.alert.alert-block(class="alert-#{flash_class(flash_level)}")
+.alert.alert-block.fade.in(class="alert-#{flash_class(flash_level)}")
   = link_to '×', '#', :class => "close", :'data-dismiss' => "alert"
   = content_tag :p, flash[flash_level]

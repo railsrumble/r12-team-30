@@ -19,4 +19,11 @@
 $(document).ready(function(){
     // Target your .container, .wrapper, .post, etc.
     $("#video-landing").fitVids();
+    
+    // $('[data-dismiss="alert"]').unbind('click');
+
+    // $('[data-dismiss="alert"]').click( function(e){
+    //   e.preventDefault();
+    //   $(this).parent().fadeOut();
+    // })
 });

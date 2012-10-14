@@ -1,30 +1,33 @@
 .store
   header
     .row-fluid
-      .name.span12
+      .spacer.span2
+      .name.span8
         h1= @store.name
+      .spacer.span2
     .row-fluid
-      .description.span12
+      .spacer.span2
+      .description.span8
         h2 = @store.short_description
+      .spacer.span2
   section
     .content.clearfix
       .row-fluid
-        .leftsidebar.span4
+        .spacer.span2
+        .leftsidebar.span2
           - if @store.logo.present?
             .row-fluid
               .logo.span12
                 div= image_tag @store.logo.url(:avatar)
           .row-fluid
-            .span2
-            .menu.span8
+            .menu.span12
               nav.menu
                 = render 'common/theme_navigation'
-            .span2
 
-        .description.span4
+        .description.span3
           = render 'common/flash_messages'
           = @store.description
-        .gallery.span4
+        .gallery.span3
           #store_gallery.gallery.carousel.carousel-fade
             - if @store.pictures.present?
               .carousel-inner
@@ -32,15 +35,15 @@
                 - @store.pictures.each do |store|
                   .item
                     = image_tag(store.image)
+        .spacer.span2
     section
-      .infos.clearfix
-        .span4
-          br
-        .span4
+      .infos.row-fluid
+        .spacer.span4
+        .span3
           #store_map.map.pull-left data-lat="#{@store.latitude}" data-lng="#{@store.longitude}"
             a href=@store.link_to_google_maps
 
-        .details.span4
+        .details.span3
           .address
             = @store.address
           .contact
@@ -54,17 +57,20 @@
                 span= ot.formatted_start
                 | -
                 span= ot.formatted_end
+        .spacer.span2
     section
-      .shop.clearfix
-        .span4
+      .shop.row-fluid
+        .spacer.span2
+        .span3.this
           - if user_signed_in?
             .shoppingcart#cart.cart
               - order = @store.orders.build
               = render 'orders/theme_form', store: @store, order: order
           - else
             | &nbsp;
-        .span8.products#products
+        .span5.products#products
           h1.title Shop
           = render 'common/theme_product_table', store: @store
+        .spacer.span2
 
 
