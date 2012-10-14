@@ -1,9 +1,9 @@
 .store
   padding: 30px
-  
-  &:nth-child(2n)
-    background-color: $grayLighter
-
+  border-bottom: 1px dotted $grayDark
+  position: relative
+  &:last-child
+    border-bottom: 0
   .name
   .logo
     margin-right: 15px
@@ -11,3 +11,8 @@
   .details
     .btn
       border-color: $black
+  footer
+    position: absolute
+    right: 30px
+    bottom: 30px
+
